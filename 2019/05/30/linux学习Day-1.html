@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>linux学习Day_1 - Fourier&#39;s Blog</title>
+<meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>linux学习Day_1 - Fourier&#39;s Blog</title>
+
+<meta name="google-site-verification" content="67z1CXZ8AOhImIglgTwqAlneRCHTO6xRJo5NeafDAqw" />
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    <meta name="description" content="linux本质一切皆文件 ls命令；cd命令；mkdir命令；rm命令；touch命令；cp命令；mv命令；软链接和硬链接；权限；文件查找；软件安装与卸载；">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux学习Day_1">
+<meta property="og:url" content="https://hztjiayou.github.io/2019/05/30/linux学习Day-1.html">
+<meta property="og:site_name" content="Fourier&#39;s Blog">
+<meta property="og:description" content="linux本质一切皆文件 ls命令；cd命令；mkdir命令；rm命令；touch命令；cp命令；mv命令；软链接和硬链接；权限；文件查找；软件安装与卸载；">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hztjiayou.github.io/assets/img/b.png">
+<meta property="og:image" content="https://hztjiayou.github.io/assets/img/a.jpg">
+<meta property="og:updated_time" content="2019-06-16T16:14:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux学习Day_1">
+<meta name="twitter:description" content="linux本质一切皆文件 ls命令；cd命令；mkdir命令；rm命令；touch命令；cp命令；mv命令；软链接和硬链接；权限；文件查找；软件安装与卸载；">
+<meta name="twitter:image" content="https://hztjiayou.github.io/assets/img/b.png">
+
+
+
+<link rel="alternative" href="/atom.xml" title="linux学习Day_1" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/panda.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/live2d/waifu.css">
+    <!-- <meta name="referrer" content="no-referrer" /> 解决图片过期问题-->
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/tubiao.jpg" alt="linux学习Day_1" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/tags/法律">律法</a>
+                
+                <a class="navbar-item"
+                href="/message">留言</a>
+                
+                <a class="navbar-item"
+                href="/friend">友链</a>
+                
+                <a class="navbar-item"
+                href="/album">美图</a>
+                
+                <a class="navbar-item"
+                href="/music">影音</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hztjiayou">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2019-05-30T09:48:25.000Z">2019-05-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1917 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    1<span id="busuanzi_value_page_pv"></span> 次查看
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                linux学习Day_1
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>linux本质一切皆文件</p>
+<p>ls命令；cd命令；mkdir命令；rm命令；touch命令；cp命令；mv命令；软链接和硬链接；权限；文件查找；软件安装与卸载；</p>
+</blockquote>
+<a id="more"></a>
+<p>ctrl   p / n  历史命令上移下移<br>ctrl   b / f  命令左移  右移<br>ctrl  a  定位到命令最前面<br>ctrl  e 定位到命令最后面<br>ctrl  d 删除命令后面的文字<br>ctrl  h删除命令前面的文字，可直接用backspace</p>
+<h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h3><p>ls  -a    显示全部文件  ps：文件名前面有 “.”为隐藏文件<br>ls  -l   为显示文件详细信息</p>
+<h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>三种”回家“的方式</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd   ~</span><br><span class="line">cd </span><br><span class="line">cd /home/用户</span><br></pre></td></tr></table></figure>
+<h4 id="文件类型："><a href="#文件类型：" class="headerlink" title="文件类型："></a>文件类型：</h4><ul>
+<li>普通文件【-】</li>
+<li>目录【d】</li>
+<li>链接符号【l】</li>
+<li>块设别【b】</li>
+<li>字符设别【c】</li>
+<li>socket文件【s】</li>
+<li>管道【p】</li>
+</ul>
+<p><img src="/assets/img/b.png" alt="图片一"></p>
+<h3 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir  aa 				#创建空目录</span><br><span class="line">mkdir  aa/bb/cc  -p    #创建非空目录    参数:-p</span><br></pre></td></tr></table></figure>
+<h3 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm  -r       文件或目录		#递归删除</span><br><span class="line">rm -ri 		文件或目录		#逐级确认删除，每一级的删除都经过通过才可删除</span><br><span class="line">rm -r     目录1/*         #删除目录1下的所有文件</span><br></pre></td></tr></table></figure>
+<h3 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch    文件1     #创建文件</span><br></pre></td></tr></table></figure>
+<h3 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp 文件1 文件2 		     #复制文件1到文件2   if 文件2不存在，则创建文件2</span><br><span class="line">cp 目录1 目录2   -r   	#复制目录需要用 -r 递归</span><br><span class="line">cp 目录1/*  目录2       #拷贝目录1下的所有文件  到目录2下</span><br></pre></td></tr></table></figure>
+<h3 id="查看文件命令"><a href="#查看文件命令" class="headerlink" title="查看文件命令"></a>查看文件命令</h3><p>cat              输出全部内容<br>more          输出一屏幕内容 ，回车增加一行，空格翻页，但是不可往前翻页<br>less        输出一屏幕内容 ，ctrl p 往前翻行，ctrl n往下翻行<br>tail            查看后10行   增加参数   -数字   则查看多少行<br>head        查看前10行</p>
+<h3 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h3><p>可以用来移动或者改名<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 文件1 文件2</span><br></pre></td></tr></table></figure></p>
+<p>移动：如果移动到的文件2存在，则文件1内容移动到了文件2<br>改名：如果文件2不存在，则文件1消失，文件2被创建，并内容与文件1一样</p>
+<h3 id="软链接和硬链接"><a href="#软链接和硬链接" class="headerlink" title="软链接和硬链接"></a>软链接和硬链接</h3><p>linux的链接分两种。一种被称为硬链接（hard link）一种被称为符号链接（软链接）</p>
+<p>[硬链接]：指通过索引节点来进行连接。在linux的文件系统中，保存在磁盘分区中的文件不管是什么类型，都给分配一个编号，称为索引节点号（inode index）。在linux中，多个文件名指向同一个索引节点是存在的，一般这种连接就是硬链接。硬链接的一个作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬链接到“重要“文件，防止误删，只删除一个硬链接不会影响索引节点本身和其他的连接，只有当最后一个连接被删除之后，数据的数据块才会被释放。也就是说，文件的真真删除是与之相关的所有硬链接都被删除。</p>
+<p>[软连接]：另外一种连接被称为软连接（symbolic link）,软连接类似于windows的快捷方式，他实际上是一个特殊的文件，在软链接中，文件实际是一个文本文件，包含另一个文件的位置信息；</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令测试：</span><br><span class="line">touce 	f1			#创建一个测试文件</span><br><span class="line">ln f1  f2			#创建f1的硬链接文件f2</span><br><span class="line">ln -s f1 f3			#创建f1的一个软链接文件f3</span><br></pre></td></tr></table></figure>
+<p><em>硬链接不占用空间，只是对文件进行了备份；不能给目录创建硬链接，只能给文件创建硬链接</em></p>
+<p>参考自：<a href="https://blog.csdn.net/smilesundream/article/details/70215944" target="_blank" rel="noopener">https://blog.csdn.net/smilesundream/article/details/70215944</a></p>
+<p>linux 的文件存储单位是块， <code>inode</code> 称之为i节点，保存了文件信息，通过inode找到文件。软链接是指向linux文件系统中的一个i节点，而硬链接是和软链接一样指向i节点，内容和软链接一样，并且删除一个硬链接不会影响软链接和其他硬链接，但是改动其中一个软链接或者硬链接，其他软链接和硬链接也会改变。可以使用<code>ls -l</code>命令查看硬链接计数；</p>
+<h3 id="文件和目录属性-（理解）"><a href="#文件和目录属性-（理解）" class="headerlink" title="文件和目录属性 （理解）"></a>文件和目录属性 （理解）</h3><blockquote>
+<p>wc        获取文本文件的行数 字数  字节数<br>od        查看二进制文件  -t 参数<br>du        查看当前目录大小 ， 参数 -h  显示大小单位<br>df        查看磁盘使用情况   参数  -h   显示大小单位</p>
+</blockquote>
+<h3 id="which-命令"><a href="#which-命令" class="headerlink" title="which 命令"></a>which 命令</h3><p>查找shell命令所在的路径<br><code>which cd</code>不显示路径，因为cd是linux内建的命令</p>
+<h3 id="查看文件权限、用户、用户组"><a href="#查看文件权限、用户、用户组" class="headerlink" title="查看文件权限、用户、用户组"></a>查看文件权限、用户、用户组</h3><p><code>whoami</code>  查看当前用户</p>
+<ul>
+<li><p>修改文件权限 </p>
+<ul>
+<li><h3 id="文字设定法："><a href="#文字设定法：" class="headerlink" title="文字设定法："></a>文字设定法：</h3></li>
+</ul>
+<p>​        命令：chmod [who] [+|-|=] [mode]</p>
+<p>​        [who]：<br>​        文件所有者：u<br>​        文件所属组：g<br>​        其他人    ：   o<br>​        所有的人：    a<br>​        [+|-|=]：<br>​         +:增加权限<br>​        -：减少权限<br>​        =：覆盖原来的权限</p>
+<p>​        [mode]：  r：读 ；  w:写；  x：可执行</p>
+<ul>
+<li><h3 id="数字设定法："><a href="#数字设定法：" class="headerlink" title="数字设定法："></a>数字设定法：</h3><p> 命令：<code>chmod  777   文件   #给文件赋所有权限</code><br> 数字：    r——4;  w——2;  x——1;<br> ​    ps:   数字 5 代表权限有 rx;  数字 3 代表权限wx<br> ​    所以可以理解 777 ：<br> ​        第一位 7 代表可读可写可执行，代表的是文件所有者；<br> ​        第二位 7 代表可读可写可执行，代表的是文件所属组；<br> ​        第三位 7 代表可读可写可执行，代表的是其他用户；<br> ​减权限：<code>chmod -001 文件1  #减少文件1其他用户的可执行权限</code> </p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="修改用户所有者和所有组"><a href="#修改用户所有者和所有组" class="headerlink" title="修改用户所有者和所有组"></a>修改用户所有者和所有组</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令：</span><br><span class="line">修改文件1的所有者和所有组： chown [所有者]:[所有组] 文件1</span><br><span class="line">修改文件1的所有者		： chown [所有者]   文件1</span><br><span class="line">修改文件1的所有组		： chgrp [所有组]   文件1</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/img/a.jpg" alt="图片二"></p>
+<h3 id="文件的查找和检索"><a href="#文件的查找和检索" class="headerlink" title="文件的查找和检索"></a>文件的查找和检索</h3><ul>
+<li><h4 id="按照文件的属性查找-find"><a href="#按照文件的属性查找-find" class="headerlink" title="按照文件的属性查找(find)"></a>按照文件的属性查找(find)</h4><ul>
+<li><p>文件名：<code>find  +  查找的目录  +  -name(这是参数)  +  &quot;文件的名字&quot;</code></p>
+</li>
+<li><p>文件大小：<code>find + 查找目录 + -size(参数)  +   +10k    #查找大于10k的文件（k小写,M大写）</code></p>
+<p>​        <code>find + 查找目录  + -size  +   +10k   +  -size  +  +100k   #大于10k小于100k</code></p>
+</li>
+<li><p>文件类型 <code>find  +  查找目录  +  -type  +    d/c/p/l/b/f/s</code></p>
+</li>
+</ul>
+</li>
+<li><h4 id="按照文件内容查找-grep"><a href="#按照文件内容查找-grep" class="headerlink" title="按照文件内容查找 (grep)"></a>按照文件内容查找 (grep)</h4><ul>
+<li><code>grep  -r  &quot;查找内容&quot;     查找路径</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="软件的安装与卸载"><a href="#软件的安装与卸载" class="headerlink" title="软件的安装与卸载"></a>软件的安装与卸载</h3><ul>
+<li><p>在线安装<br>apt-get<br>安装：sudo apt-get install tree  #tree替换位软件名<br>移除：sudo apt-get remove tree<br>更新：sudo apt-get update<br>清理所有的软件安装包：sudo apt-get clean(实际清理的是 /var/cache/apt/archiver 目录下的 .deb文件)</p>
+</li>
+<li><p>deb包安装</p>
+<p> ​    安装：sudo dpkg -i xxx.deb<br> ​    卸载：sudo dpkg -r xxx</p>
+</li>
+<li><p>源码安装<br> 1.解压缩源代码包<br> 2.进入到安装目录<br> 3.检测文件是否缺失,创建Makefile,检测编译环境：./configure<br> 4.编译源码，生成库和可执行程序;命令：make<br> 5.把库和可执行程序安装到系统了目录下：sudo make install<br> 6.删除和卸载软件：sudo make distclean<br> 7.上述安装步骤并不是绝对的，应该查看附带的README文件</p>
+</li>
+</ul>
+<p>参考：黑马程序员<a href="https://www.bilibili.com/video/av33660709/?p=43" target="_blank" rel="noopener">https://www.bilibili.com/video/av33660709/?p=43</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/linux/">linux</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/30/linux学习Day-2.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">linux学习Day_2</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/28/hexo搭建github博客教程.html">
+                <span class="level-item">hexo+github+个人域名搭建博客教程</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'NXFUbBGEhbCBH8V94r8uOxpX-gzGzoHsz',
+        app_key: 'cBEVo6qylQrXl34Ks162qXe4',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/assets/img/me.jpg" alt="huangzhentao">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        huangzhentao
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        你要安静的优秀，悄无声息的坚强
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hunan.China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hztjiayou" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hztjiayou">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://github.com/hztjiayou ">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://github.com/hztjiayou ">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://github.com/hztjiayou ">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.cnblogs.com/hztjiayou/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">博客园</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.cnblogs.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.zhihu.com/people/huang-zhen-tao-94-55/activities" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">知乎</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.zhihu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+    
+        <div class="column-right-shadow  ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/关于manjaro的一系列配置.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/a754963a7584eddb278cb7fd71d3-1431091.jpg!s" alt="关于manjaro的一系列配置&amp;使用方法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T16:06:52.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/关于manjaro的一系列配置.html" class="has-link-black-ter is-size-6">关于manjaro的一系列配置&amp;使用方法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/hexo增加aplayer音乐播放器.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/e671d37fcb61718faf62dd05c4abe-1597298.jpg" alt="hexo增加aplayer音乐播放器及valine评论">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:04:18.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/hexo增加aplayer音乐播放器.html" class="has-link-black-ter is-size-6">hexo增加aplayer音乐播放器及valine评论</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/工具教程/">工具教程</a> / <a class="has-link-grey -link" href="/categories/工具教程/主题工具/">主题工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/04/记录更换icarus主题.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/d01e642612c9f5d4d16e0e13a286-1427847.jpg" alt="更换icarus主题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-04T15:20:06.000Z">2019-10-04</time></div>
+                    <a href="/2019/10/04/记录更换icarus主题.html" class="has-link-black-ter is-size-6">更换icarus主题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/工具教程/">工具教程</a> / <a class="has-link-grey -link" href="/categories/工具教程/主题工具/">主题工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/12/00-kali-linux初始配置.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/jjjyyyy.jpg" alt="00 kali linux初始配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T16:23:03.000Z">2019-09-12</time></div>
+                    <a href="/2019/09/12/00-kali-linux初始配置.html" class="has-link-black-ter is-size-6">00 kali linux初始配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/11/01kali-NC-命令使用.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/71790a760e5b6e61aae5afb3f623-14475.jpg" alt="01 kali NC 命令使用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T12:04:00.000Z">2019-09-11</time></div>
+                    <a href="/2019/09/11/01kali-NC-命令使用.html" class="has-link-black-ter is-size-6">01 kali NC 命令使用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/My-college/">
+            <span class="level-start">
+                <span class="level-item">My college</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/工具教程/">
+            <span class="level-start">
+                <span class="level-item">工具教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/工具教程/github/">
+            <span class="level-start">
+                <span class="level-item">github</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/工具教程/主题工具/">
+            <span class="level-start">
+                <span class="level-item">主题工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/思考/">
+            <span class="level-start">
+                <span class="level-item">思考</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/电影/">
+            <span class="level-start">
+                <span class="level-item">电影</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/考研/">
+            <span class="level-start">
+                <span class="level-item">考研</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/计算机网络/">
+            <span class="level-start">
+                <span class="level-item">计算机网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/软件/">
+            <span class="level-start">
+                <span class="level-item">软件</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/集成电路/">
+            <span class="level-start">
+                <span class="level-item">集成电路</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NC/">
+                        <span class="tag">NC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/github/">
+                        <span class="tag">github</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo主题/">
+                        <span class="tag">hexo主题</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/kali-linux/">
+                        <span class="tag">kali linux</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/manjaro/">
+                        <span class="tag">manjaro</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/work/">
+                        <span class="tag">work</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/思考/">
+                        <span class="tag">思考</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/笔记/">
+                        <span class="tag">笔记</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/考研/">
+                        <span class="tag">考研</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/课程设计/">
+                        <span class="tag">课程设计</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/随笔/">
+                        <span class="tag">随笔</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/集成电路/">
+                        <span class="tag">集成电路</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/NC/" style="font-size: 10px;">NC</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/hexo主题/" style="font-size: 13.33px;">hexo主题</a> <a href="/tags/kali-linux/" style="font-size: 13.33px;">kali linux</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/manjaro/" style="font-size: 10px;">manjaro</a> <a href="/tags/work/" style="font-size: 10px;">work</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/笔记/" style="font-size: 16.67px;">笔记</a> <a href="/tags/考研/" style="font-size: 10px;">考研</a> <a href="/tags/课程设计/" style="font-size: 10px;">课程设计</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/集成电路/" style="font-size: 13.33px;">集成电路</a>
+    </div>
+</div>
+
+        
+            
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            item
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                    <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019.10.05：添加valine评论</span>
+                    </span>
+            </li>
+        
+            <li>
+                    <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019.10.04：采用Icarus主题</span>
+                    </span>
+            </li>
+        
+            <li>
+                    <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019-05-27：建站&amp;采用yilia主题</span>
+                    </span>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+        
+        </div>
+    
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/tubiao.jpg" alt="linux学习Day_1" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 huangzhentao
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/hztjiayou">hzt</a>&nbsp;
+                
+                <br>
+                &copy; 版权说明：[本网站所有内容均收集于互联网或自己创作,<br>&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="https://huangzhentao.top/message/" target="_blank">留言</a>，立即处理]
+                <br>
+                <span id="busuanzi_container_site_uv">
+                      ❤️感谢 <span id="busuanzi_value_site_uv"></span> 小伙伴的 
+                </span>
+                 <span id="busuanzi_value_site_pv"></span> 次光临 ❤️
+                 
+                </p>
+            </div>
+
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://github.com/hztjiayou ">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://github.com/hztjiayou ">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hztjiayou">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+
+                
+                </div>
+            
+            </div>
+            </div>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277650037'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277650037%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+        </div>
+    </div>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" defer src="/js/global-hot-data.js"></script>
+    <script type="text/javascript" async="" src="/live2d/autoload.js"></script>
+</body>
+</html>
