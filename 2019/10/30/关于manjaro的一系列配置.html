@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="Fourier&#39;s Blog">
 <meta property="og:description" content="偶然的机会了解到了manjaro这个linux发行版本，顿时被它迷住了，再加上win频频让我更新，导致我的vmware workstation不能使用好几次，故决定放弃win,给物理机安装manjaro;本文章是本人安装过程及学习过程的一系列记录，持续更新…….">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-29T16:54:13.596Z">
+<meta property="og:updated_time" content="2019-10-31T08:30:38.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于manjaro的一系列配置&amp;使用方法">
 <meta name="twitter:description" content="偶然的机会了解到了manjaro这个linux发行版本，顿时被它迷住了，再加上win频频让我更新，导致我的vmware workstation不能使用好几次，故决定放弃win,给物理机安装manjaro;本文章是本人安装过程及学习过程的一系列记录，持续更新…….">
@@ -138,9 +138,6 @@
                 href="/tags">标签</a>
                 
                 <a class="navbar-item"
-                href="/tags/法律">律法</a>
-                
-                <a class="navbar-item"
                 href="/message">留言</a>
                 
                 <a class="navbar-item"
@@ -151,6 +148,9 @@
                 
                 <a class="navbar-item"
                 href="/music">影音</a>
+                
+                <a class="navbar-item"
+                href="/Todo">Todo</a>
                 
                 <a class="navbar-item"
                 href="/about">关于</a>
@@ -209,7 +209,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1595 个字)
+                    17 分钟 读完 (大约 2503 个字)
                 </span>
                 
                 
@@ -244,7 +244,17 @@
 <p>解决中文输入法无法切换问题: 添加文件 ~/.xprofile：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GTK_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=&quot;@im=fcitx&quot;</span><br></pre></td></tr></table></figure>
 <p>输入法需要重启生效</p>
-<h4 id="pacman常用命令"><a href="#pacman常用命令" class="headerlink" title="pacman常用命令"></a>pacman常用命令</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S 软件名　# 安装</span><br><span class="line">sudo pacman -R 软件名　# 删除单个软件包，保留其全部已经安装的依赖关系</span><br><span class="line">sudo pacman -Rs 软件名 # 除指定软件包，及其所有没有被其他已安装软件包使用的依赖关系</span><br><span class="line">sudo pacman -Ss 软件名  # 查找软件</span><br><span class="line">sudo pacman -Sc # 清空并且下载新数据</span><br><span class="line">sudo pacman -Syu　# 升级所有软件包</span><br><span class="line">sudo pacman -Qs # 搜索已安装的包</span><br></pre></td></tr></table></figure>
+<h4 id="pacman常用命令"><a href="#pacman常用命令" class="headerlink" title="pacman常用命令"></a>pacman常用命令</h4><h5 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h5><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syu    #对整个系统e进行更新</span><br><span class="line">pacman -Syy	        #强制更新</span><br><span class="line">pacman -Syudd	    #  使用 -dd跳过所有检测</span><br></pre></td></tr></table></figure>
+<h5 id="搜索包"><a href="#搜索包" class="headerlink" title="搜索包"></a>搜索包</h5><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pacman -Ss keyword	在仓库中搜索含关键字的包（常用）	pacman -Ss ‘^fcitx-’</span><br><span class="line">pacman -Qs keyword	搜索已安装的包（常用）	pacman -Qs ‘^fcitx-’</span><br><span class="line">pacman -Qi package_name	查询本地安装包的详细信息	</span><br><span class="line">pacman -Ql package_name	列出该包的文件	</span><br><span class="line">pacman -Fs keyword	按文件名查找软件库	</span><br><span class="line">pacman -Si package_name	显示远程软件包的详尽的信息	</span><br><span class="line">pacman -Qii package_name	使用两个 -i 将同时显示备份文件和修改状态	</span><br><span class="line">pacman -Ql package_name	要获取已安装软件包所包含文件的列表	</span><br><span class="line">pacman -Fl package_name	查询远程库中软件包包含的文件	</span><br><span class="line">pacman -Qk package_name	检查软件包安装的文件是否都存在	</span><br><span class="line">pacman -Fo /path/to/file_name	查询文件属于远程数据库中的哪个软件包	</span><br><span class="line">pacman -Qdt	要罗列所有不再作为依赖的软件包(孤立orphans)	</span><br><span class="line">pacman -Qet	要罗列所有明确安装而且不被其它包依赖的软件包	</span><br><span class="line">pactree package_name	要显示软件包的依赖树	</span><br><span class="line">whoneeds package_name	检查一个安装的软件包被那些包依赖	pkgtoolsAUR中的whoneeds</span><br><span class="line">pactree -r package_name	检查一个安装的软件包被那些包依赖</span><br></pre></td></tr></table></figure>
+<h5 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h5><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pacman -S package_name	执行 pacman -S firefox 将安装 Firefox（常用）	你也可以同时安装多个包，只需以空格分隔包名即</span><br><span class="line">pacman -Sy package_name	与上面命令不同的是，该命令将在同步包数据库后再执行安装。	</span><br><span class="line">pacman -Sv package_name	在显示一些操作信息后执行安装。	</span><br><span class="line">pacman -U local_package_name	安装本地包，其扩展名为pkg.tar.gz或pkg.tar.xz	</span><br><span class="line">pacman -U url	安装一个远程包（不在 pacman 配置的源里面）	例：pacman -U http://www.example.com/repo/example.pkg.tar.xz</span><br></pre></td></tr></table></figure>
+<h5 id="其他用法"><a href="#其他用法" class="headerlink" title="其他用法"></a>其他用法</h5><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sw package_name	只下载包，不安装。	</span><br><span class="line">pacman -Sc	清理未安装的包文件（常用）</span><br><span class="line">包文件位于 /var/cache/pacman/pkg/ 目录	</span><br><span class="line">pacman -Scc	清理所有的缓存文件（常用）</span><br></pre></td></tr></table></figure>
+<p><em>参考</em></p>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Category:%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">anki 简体中文</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">pacman简体中文</a>)</li>
+<li><a href="https://www.archlinux.org/pacman/pacman.8.html" target="_blank" rel="noopener">pacman手册</a></li>
+<li><a href="https://blog.csdn.net/nangy2514/article/details/93194184#4__49" target="_blank" rel="noopener">这篇博客</a></li>
+</ul>
 <h4 id="yay"><a href="#yay" class="headerlink" title="yay"></a>yay</h4><p>Yay 是用 Go 编写的 Arch Linux AUR 包管理工具。AUR 的全称是 Arch User Repository，是 Arch Linux/Manjaro 用户的社区驱动存储库，创建 AUR 的目的是使共享社区包的过程更容易和有条理。使用它可以在 Arch Linux/Manjaro 系统中安装和更新软件包。这个软件仓库的软件包是相当丰富，可以查看这个网站的统计<a href="https://repology.org/repositories/statistics/total" target="_blank" rel="noopener">Repository statistics</a>，它的软件列表可以在<a href="https://aur.archlinux.org/packages/" target="_blank" rel="noopener">Archlinux AUR</a>查看。具体可以查看 Arch Wiki</p>
 <blockquote>
 <p>注意：很多教程比较老了，yaourt 目前已经停止维护，用户可以考虑迁移到 aurman 或 yay</p>
@@ -259,11 +269,34 @@
 <h4 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h4><p><a href="https://ohmyz.sh/" target="_blank" rel="noopener">zsh</a>是一个非常好用的shell，具有强大的自动补全功能，尤其在使用pacman/yay安装软件时，可以自动补全软件名。</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S zsh # 安装zsh</span><br><span class="line">echo $SHELL # 查看大概年前 shell</span><br><span class="line">chsh -s /bin/zsh # 修改默认shell，这个是修改当前用户的终端，如果要修改 root 账户，需要切换到 root用户</span><br><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br><span class="line">sudo pacman -S autojump</span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
 <p>重启shell生效</p>
-<h4 id="安装常用软件"><a href="#安装常用软件" class="headerlink" title="安装常用软件"></a>安装常用软件</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"># deepin 系的软件</span><br><span class="line">sudo pacman -S deepin-picker # 深度取色器</span><br><span class="line">sudo pacman -S deepin-screen-recorder # 录屏软件，可以录制 Gif 或者 MP4 格式</span><br><span class="line">sudo pacman -S deepin-screenshot # 深度截图</span><br><span class="line">sudo pacman -S deepin-system-monitor # 系统状态监控</span><br><span class="line">yay -s deepin-wine-wechat</span><br><span class="line">yay -S deepin-wine-tim</span><br><span class="line">yay -S deepin-wine-baidupan</span><br><span class="line">yay -S deepin.com.thunderspeed</span><br><span class="line"></span><br><span class="line"># 开发软件</span><br><span class="line">sudo pacman -S jdk8-openjdk</span><br><span class="line">sudo pacman -S make</span><br><span class="line">sudo pacman -S cmake</span><br><span class="line">sudo pacman -S clang</span><br><span class="line">sudo pacman -S nodejs</span><br><span class="line">sudo pacman -S npm</span><br><span class="line">sudo pacman -S goland</span><br><span class="line">sudo pacman -S vim</span><br><span class="line">sudo pacman -S maven</span><br><span class="line">sudo pacman -S pycharm-professional # Python IDE</span><br><span class="line">sudo pacman -S intellij-idea-ultimate-edition # JAVA IDE</span><br><span class="line">sudo pacman -S goland # Go IDE</span><br><span class="line">sudo pacman -S visual-studio-code-bin # vscode</span><br><span class="line">sudo pacman -S qtcreator # 一款QT开发软件</span><br><span class="line">sudo pacman -S postman-bin</span><br><span class="line">sudo pacman -S insomnia # REST模拟工具</span><br><span class="line">sudo pacman -S gitkraken # GIT管理工具</span><br><span class="line">sudo pacman -S wireshark-qt # 抓包</span><br><span class="line">sudo pacman -S zeal</span><br><span class="line">sudo pacman -S gitkraken # Git 管理工具</span><br><span class="line"></span><br><span class="line"># 办公软件</span><br><span class="line">sudo pacman -S google-chrome</span><br><span class="line">sudo pacman -S foxitreader # pdf 阅读</span><br><span class="line">sudo pacman -S bookworm # 电子书阅读</span><br><span class="line">sudo pacman -S unrar unzip p7zip</span><br><span class="line">sudo pacman -S goldendict # 翻译、取词</span><br><span class="line">sudo pacman -S wps-office</span><br><span class="line">yay -S typora # markdown 编辑</span><br><span class="line">yay -S electron-ssr # 缺少我需要的加密算法</span><br><span class="line">yay -S xmind</span><br><span class="line"></span><br><span class="line"># 设计</span><br><span class="line">sudo pacman -S pencil # 免费开源界面原型图绘制工具</span><br><span class="line"></span><br><span class="line"># 娱乐软件</span><br><span class="line">sudo pacman -S netease-cloud-music</span><br><span class="line"></span><br><span class="line"># 下载软件</span><br><span class="line">sudo pacman -S aria2</span><br><span class="line">sudo pacman -S filezilla  # FTP/SFTP</span><br><span class="line"></span><br><span class="line"># 图形</span><br><span class="line">sudo pacman -S gimp # 修图</span><br><span class="line"></span><br><span class="line"># 系统工具</span><br><span class="line">sudo pacman -S albert #类似Mac Spotlight，另外一款https://cerebroapp.com/</span><br><span class="line">yay -S copyq #  剪贴板工具，类似 Windows 上的 Ditto</span><br><span class="line"></span><br><span class="line"># 终端</span><br><span class="line">sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A &apos;Arch Linux&apos;</span><br><span class="line">sudo pacman -S htop</span><br><span class="line">sudo pacman -S bat</span><br><span class="line">sudo pacman -S yakuake # 堪称 KDE 下的终端神器，KDE 已经自带，F12 可以唤醒</span><br><span class="line">sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat</span><br><span class="line">yay -S tldr</span><br><span class="line">yay -S tig # 命令行下的 git 历史查看工具</span><br><span class="line">yay -S tree</span><br><span class="line">yay -S ncdu # 命令行下的磁盘分析器，支持Vim操作</span><br><span class="line">yay -S mosh # 一款速度更快的 ssh 工具，网络不稳定时使用有奇效</span><br></pre></td></tr></table></figure>
+<h4 id="安装常用软件"><a href="#安装常用软件" class="headerlink" title="安装常用软件"></a>安装常用软件</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"># deepin 系的软件</span><br><span class="line">sudo pacman -S deepin-picker # 深度取色器</span><br><span class="line">sudo pacman -S deepin-screen-recorder # 录屏软件，可以录制 Gif 或者 MP4 格式</span><br><span class="line">sudo pacman -S deepin-screenshot # 深度截图</span><br><span class="line">sudo pacman -S deepin-system-monitor # 系统状态监控</span><br><span class="line">yay -s deepin-wine-wechat</span><br><span class="line">yay -S deepin-wine-tim</span><br><span class="line">yay -S deepin-wine-baidupan</span><br><span class="line">yay -S deepin.com.thunderspeed</span><br><span class="line"></span><br><span class="line"># 开发软件</span><br><span class="line">sudo pacman -S jdk8-openjdk</span><br><span class="line">sudo pacman -S make</span><br><span class="line">sudo pacman -S cmake</span><br><span class="line">sudo pacman -S clang</span><br><span class="line">sudo pacman -S nodejs</span><br><span class="line">sudo pacman -S npm</span><br><span class="line">sudo pacman -S goland</span><br><span class="line">sudo pacman -S vim</span><br><span class="line">sudo pacman -S maven</span><br><span class="line">sudo pacman -S pycharm-professional # Python IDE</span><br><span class="line">sudo pacman -S intellij-idea-ultimate-edition # JAVA IDE</span><br><span class="line">sudo pacman -S goland # Go IDE</span><br><span class="line">sudo pacman -S visual-studio-code-bin # vscode</span><br><span class="line">sudo pacman -S qtcreator # 一款QT开发软件</span><br><span class="line">sudo pacman -S postman-bin</span><br><span class="line">sudo pacman -S insomnia # REST模拟工具</span><br><span class="line">sudo pacman -S gitkraken # GIT管理工具</span><br><span class="line">sudo pacman -S wireshark-qt # 抓包</span><br><span class="line">sudo pacman -S zeal</span><br><span class="line">sudo pacman -S gitkraken # Git 管理工具</span><br><span class="line"></span><br><span class="line"># 办公软件</span><br><span class="line">sudo pacman -S google-chrome</span><br><span class="line">sudo pacman -S foxitreader # pdf 阅读</span><br><span class="line">sudo pacman -S bookworm # 电子书阅读</span><br><span class="line">sudo pacman -S unrar unzip p7zip</span><br><span class="line">sudo pacman -S goldendict # 翻译、取词</span><br><span class="line">sudo pacman -S wps-office</span><br><span class="line">sudo pacman -S ttf-wps-fonts  #按装wps缺失字体  </span><br><span class="line">yay -S typora # markdown 编辑</span><br><span class="line">yay -S electron-ssr # 缺少我需要的加密算法</span><br><span class="line">yay -S xmind</span><br><span class="line"></span><br><span class="line"># 设计</span><br><span class="line">sudo pacman -S pencil # 免费开源界面原型图绘制工具</span><br><span class="line"></span><br><span class="line"># 娱乐软件</span><br><span class="line">sudo pacman -S netease-cloud-music</span><br><span class="line"></span><br><span class="line"># 下载软件</span><br><span class="line">sudo pacman -S aria2</span><br><span class="line">sudo pacman -S filezilla  # FTP/SFTP</span><br><span class="line"></span><br><span class="line"># 图形</span><br><span class="line">sudo pacman -S gimp # 修图</span><br><span class="line"></span><br><span class="line"># 系统工具</span><br><span class="line">sudo pacman -S albert #类似Mac Spotlight，另外一款https://cerebroapp.com/</span><br><span class="line">yay -S copyq #  剪贴板工具，类似 Windows 上的 Ditto</span><br><span class="line">sudo pacman -S gufw	#安装防火墙	Linux 世界中最简单的防火墙之一</span><br><span class="line"></span><br><span class="line"># 终端</span><br><span class="line">sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A &apos;Arch Linux&apos;</span><br><span class="line">sudo pacman -S htop     #可以在终端中直接管理进程</span><br><span class="line">sudo pacman -S bat</span><br><span class="line">sudo pacman -S yakuake # 堪称 KDE 下的终端神器，KDE 已经自带，F12 可以唤醒</span><br><span class="line">sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat</span><br><span class="line">yay -S tldr</span><br><span class="line">yay -S tig # 命令行下的 git 历史查看工具</span><br><span class="line">yay -S tree</span><br><span class="line">yay -S ncdu # 命令行下的磁盘分析器，支持Vim操作</span><br><span class="line">yay -S mosh # 一款速度更快的 ssh 工具，网络不稳定时使用有奇效</span><br></pre></td></tr></table></figure>
 <p>OK，以上就是一些安装manjaro之后的常规配置</p>
 <hr>
-<h4 id="安装配置vmware-workstation"><a href="#安装配置vmware-workstation" class="headerlink" title="安装配置vmware workstation"></a>安装配置vmware workstation</h4><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="解决QQ、Tim、网易云音乐、sublime中无法输入中文问题"><a href="#解决QQ、Tim、网易云音乐、sublime中无法输入中文问题" class="headerlink" title="解决QQ、Tim、网易云音乐、sublime中无法输入中文问题"></a>解决QQ、Tim、网易云音乐、sublime中无法输入中文问题</h4><h4 id="解决无法上网-不显示wifi问题"><a href="#解决无法上网-不显示wifi问题" class="headerlink" title="解决无法上网/不显示wifi问题"></a>解决无法上网/不显示wifi问题</h4><p>开机后显示wifi不可用，鼠标放在网络图标上显示<code>Networkmanager未运行</code>，解决方法是在终端执行以下命令</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart NetworkManager.service</span><br></pre></td></tr></table></figure>
+<h4 id="安装配置vmware-workstation"><a href="#安装配置vmware-workstation" class="headerlink" title="安装配置vmware workstation"></a>安装配置vmware workstation</h4><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>在manjaro的安装配置中，关于vmware的安装着实让我头疼;新建虚拟机打开出现错误</p>
+<blockquote>
+<p>could not open /dev/vmmon:?????? please make sure that the kernel moduel vmmon is load</p>
+</blockquote>
+<p>google、baidu搜索有遇到同样问题的，但是没有一个能够解决！！！前后折腾了许久，还选择安装了VirtulBox但是使用不习惯，后来突然醒悟可以去<code>manjaro</code>的论坛找找，这才找到解决方法。<br>感慨：</p>
+<ul>
+<li>使用linux真的可以很好锻炼自我解决问题的能力。</li>
+<li>找资料要有的放矢，不能盲目,否则就是浪费时间，要缩小查找范围。<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5></li>
+<li><p>使用manjaro提供的方法Install vmware-workstation</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pamac build vmware-workstation</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装之后，重启你的设备，执行下面命令加载vmmon模块</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe -a vmw_vmci vmmon</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Start and enable services（开启以及自启动服务）</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable --now vmware-networks.service</span><br><span class="line">sudo systemctl enable --now vmware-usbarbitrator.service</span><br><span class="line">sudo systemctl enable --now vmware-hostd.service</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>上述服务的用处：<br>vmware-networks.service: Provides network access inside VMs, most people will want this enabled<br>vmware-usbarbitrator.service: Allows USB devices to be connected inside VMs<br>vmware-hostd.service: Enables sharing of VMs on the network</p>
+</blockquote>
+<p><em>至此，vmmon的问题应该完美解决了;如果你的问题还没有解决可以参考以下链接或者到manjaro frum提出问题</em><br><a href="https://wiki.manjaro.org/index.php?title=VMware#Installing_VMWare_Workstation_on_Manjaro" target="_blank" rel="noopener">Installing VMWare Workstation on Manjaro</a></p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="解决QQ、Tim、网易云音乐、sublime中无法输入中文问题"><a href="#解决QQ、Tim、网易云音乐、sublime中无法输入中文问题" class="headerlink" title="解决QQ、Tim、网易云音乐、sublime中无法输入中文问题"></a>解决QQ、Tim、网易云音乐、sublime中无法输入中文问题</h4><p>待更新</p>
+<h4 id="网络启停"><a href="#网络启停" class="headerlink" title="网络启停"></a>网络启停</h4><p>开机后显示wifi不可用，鼠标放在网络图标上显示<code>Networkmanager未运行</code>，解决方法是在终端执行以下命令</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart NetworkManager.service</span><br><span class="line">systemctl enable NetworkManager.service</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -398,7 +431,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        23
                     </p>
                 </div>
             </div>
@@ -494,7 +527,23 @@
         <a class="is-flex" href="#pacman常用命令">
         <span class="has-mr-6">1.3</span>
         <span>pacman常用命令</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#更新系统">
+        <span class="has-mr-6">1.3.1</span>
+        <span>更新系统</span>
         </a></li><li>
+        <a class="is-flex" href="#搜索包">
+        <span class="has-mr-6">1.3.2</span>
+        <span>搜索包</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装软件">
+        <span class="has-mr-6">1.3.3</span>
+        <span>安装软件</span>
+        </a></li><li>
+        <a class="is-flex" href="#其他用法">
+        <span class="has-mr-6">1.3.4</span>
+        <span>其他用法</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#yay">
         <span class="has-mr-6">1.4</span>
         <span>yay</span>
@@ -510,7 +559,15 @@
         <a class="is-flex" href="#安装配置vmware-workstation">
         <span class="has-mr-6">1.7</span>
         <span>安装配置vmware workstation</span>
-        </a></li></ul></li><li>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1.7.1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#解决方法">
+        <span class="has-mr-6">1.7.2</span>
+        <span>解决方法</span>
+        </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#常见问题">
         <span class="has-mr-6">2</span>
         <span>常见问题</span>
@@ -519,9 +576,9 @@
         <span class="has-mr-6">2.1</span>
         <span>解决QQ、Tim、网易云音乐、sublime中无法输入中文问题</span>
         </a></li><li>
-        <a class="is-flex" href="#解决无法上网-不显示wifi问题">
+        <a class="is-flex" href="#网络启停">
         <span class="has-mr-6">2.2</span>
-        <span>解决无法上网/不显示wifi问题</span>
+        <span>网络启停</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -639,14 +696,14 @@
             
             <a href="/2019/09/12/00-kali-linux初始配置.html" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/jjjyyyy.jpg" alt="00 kali linux初始配置">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/jjjyyyy.jpg" alt="kali linux初始配置">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-11T16:23:03.000Z">2019-09-12</time></div>
-                    <a href="/2019/09/12/00-kali-linux初始配置.html" class="has-link-black-ter is-size-6">00 kali linux初始配置</a>
+                    <a href="/2019/09/12/00-kali-linux初始配置.html" class="has-link-black-ter is-size-6">kali linux初始配置</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                     </p>
@@ -713,7 +770,7 @@
                     <span class="level-item">八月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -724,7 +781,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -826,7 +883,7 @@
                 <span class="level-item">考研</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/计算机网络/">
@@ -946,7 +1003,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/随笔/">
                         <span class="tag">随笔</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -968,7 +1025,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/NC/" style="font-size: 10px;">NC</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/hexo主题/" style="font-size: 13.33px;">hexo主题</a> <a href="/tags/kali-linux/" style="font-size: 13.33px;">kali linux</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/manjaro/" style="font-size: 10px;">manjaro</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/笔记/" style="font-size: 16.67px;">笔记</a> <a href="/tags/考研/" style="font-size: 10px;">考研</a> <a href="/tags/课程设计/" style="font-size: 10px;">课程设计</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/集成电路/" style="font-size: 13.33px;">集成电路</a>
+        <a href="/tags/NC/" style="font-size: 10px;">NC</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/hexo主题/" style="font-size: 13.33px;">hexo主题</a> <a href="/tags/kali-linux/" style="font-size: 13.33px;">kali linux</a> <a href="/tags/linux/" style="font-size: 16.67px;">linux</a> <a href="/tags/manjaro/" style="font-size: 10px;">manjaro</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/笔记/" style="font-size: 16.67px;">笔记</a> <a href="/tags/考研/" style="font-size: 10px;">考研</a> <a href="/tags/课程设计/" style="font-size: 10px;">课程设计</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a> <a href="/tags/集成电路/" style="font-size: 13.33px;">集成电路</a>
     </div>
 </div>
 
