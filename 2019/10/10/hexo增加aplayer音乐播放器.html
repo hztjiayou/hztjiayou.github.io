@@ -36,7 +36,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/Snipaste.jpg">
-<meta property="og:updated_time" content="2019-10-21T10:08:27.000Z">
+<meta property="og:updated_time" content="2019-10-21T10:08:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo增加aplayer音乐播放器及valine评论">
 <meta name="twitter:description" content="本文介绍在hexo博客中增加一个音乐播放器界面，可以放上自己喜欢的歌单；增加valine评论，使得每一篇文章都可留言评论。">
@@ -113,9 +113,9 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/live2d/waifu.css">
     <!-- <meta name="referrer" content="no-referrer" /> 解决图片过期问题-->
-<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
-<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
 </head>
 <body class="is-2-column">
     <nav class="navbar navbar-main">
@@ -242,8 +242,8 @@
 <p>aplayer是一款HTML音乐播放器，具有美观的播放界面，被广泛的使用在各大平台<a href="https://aplayer.js.org/#/" target="_blank" rel="noopener">样例展示</a>        <a href="https://github.com/MoePlayer/APlayer" target="_blank" rel="noopener">github</a></p>
 </blockquote>
 <p>通过aplayer你可在你的博客中任意的添加喜欢的歌曲或者歌单<br><strong>单曲</strong><br>
-    <div id="aplayer-WuShrfpv" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="3986040" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div><br><strong>歌单</strong><br>
-    <div id="aplayer-ElSOveSA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2122624496" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div></p>
+    <div id="aplayer-yTDMrdbS" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="3986040" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div><br><strong>歌单</strong><br>
+    <div id="aplayer-XYfNSNvD" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2122624496" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div></p>
 <p>同时aplayer还提供<em>模拟模式</em>和<em>吸附模式</em>，可以参考官方文档<a href="https://aplayer.js.org/#/home?id=fixed-mode" target="_blank" rel="noopener">aplayer</a></p>
 <hr>
 <h4 id="配置教程"><a href="#配置教程" class="headerlink" title="配置教程"></a>配置教程</h4><p><strong>安装hexo-tag-aplayer插件</strong><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-tag-aplayer</span><br></pre></td></tr></table></figure></p>
@@ -1047,6 +1047,12 @@
         
             <li>
                     <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019.10.30：添加Todo板块、删除板娘</span>
+                    </span>
+            </li>
+        
+            <li>
+                    <span class="level-left">
                         <span class="level-item" style="justify-content:left;margin-left:4px;">2019.10.05：添加valine评论</span>
                     </span>
             </li>
@@ -1279,6 +1285,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" defer src="/js/global-hot-data.js"></script>
-    <script type="text/javascript" async="" src="/live2d/autoload.js"></script>
+
 </body>
 </html>
