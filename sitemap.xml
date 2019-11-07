@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hztjiayou.github.io/album/index.html</loc>
+    
+    <lastmod>2019-11-07T15:37:17.493Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hztjiayou.github.io/2019/11/06/My-first-cloud-server.html</loc>
     
     <lastmod>2019-11-06T12:12:01.727Z</lastmod>
@@ -199,13 +206,6 @@
   
   <url>
     <loc>https://hztjiayou.github.io/categories/index.html</loc>
-    
-    <lastmod>2019-09-29T13:17:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hztjiayou.github.io/album/index.html</loc>
     
     <lastmod>2019-09-29T13:17:56.000Z</lastmod>
     

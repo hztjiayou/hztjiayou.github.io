@@ -11,5 +11,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://removeif.github.io/sitemap.xml
-Sitemap: https://removeif.github.io/baidusitemap.xml
+Sitemap: https://hztjiayou.github.io/sitemap.xml
+Sitemap: https://hztjiayou.github.io/baidusitemap.xml
