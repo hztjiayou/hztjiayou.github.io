@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="Fourier&#39;s Blog">
 <meta property="og:description" content="写在前面 近日在V2ex论坛，见牛客这个网站的工作人员在搞活动，学生第一次在华为云购机，一年的学生服务器原价99元返现90元，抱着将信将疑的态度，在某日凌晨零点抢购了一台学生服务器，这也是本人的第一台服务器….">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T12:12:01.727Z">
+<meta property="og:updated_time" content="2019-11-11T13:17:25.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My first cloud server">
 <meta name="twitter:description" content="写在前面 近日在V2ex论坛，见牛客这个网站的工作人员在搞活动，学生第一次在华为云购机，一年的学生服务器原价99元返现90元，抱着将信将疑的态度，在某日凌晨零点抢购了一台学生服务器，这也是本人的第一台服务器….">
@@ -209,7 +209,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 729 个字)
+                    9 分钟 读完 (大约 1275 个字)
                 </span>
                 
                 
@@ -230,7 +230,7 @@
             <h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><blockquote>
 <p>近日在V2ex论坛，见<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">牛客</a>这个网站的工作人员在搞活动，学生第一次在华为云购机，一年的学生服务器原价99元返现90元，抱着将信将疑的态度，在某日凌晨零点抢购了一台学生服务器，这也是本人的第一台服务器….<br><a id="more"></a></p>
 </blockquote>
-<p><del>因为华为云每日限购60台学生服务器，因此从11:55就在购买界面守候（双十一都没这么激动，好傻的样子），抢到服务器之后从激动慢慢变得一脸懵逼，心想：这玩意咋用？就如同当年第一次购入域名一样，对于这个这个听起来极其高大上的东西一头雾水（其实相比当初，自己现在还是强一点👀）。作为一个电子专业的小白，没啥优点，为数不多的优点就是脸皮厚，不懂就问，再不懂就问狗哥呗，还能难倒我咋的。秉着这样的精神，就有了下文。</del>（这都是假的）</p>
+<p><del>因为华为云每日限购60台学生服务器，因此从11:55就在购买界面守候（双十一都没这么激动，好傻的样子），抢到服务器之后从激动慢慢变得一脸懵逼，心想：这玩意咋用？就如同当年第一次购入域名一样，对于这个这个听起来极其高大上的东西一头雾水（其实相比当初，自己现在还是强一点👀）。作为一个电子专业的小白，没啥优点，为数不多的优点就是脸皮厚，不懂就问，再不懂就问狗哥呗，还能难倒我咋的。秉着这样的精神，就有了下文。</del>（这不是真的）</p>
 <hr>
 <blockquote>
 <p><strong>服务器配置</strong><br>1核CPU<br>2G内存<br>1M带宽<br>40G系统盘<br>系统：Ubuntu 18.04 server 64bit<br>9块钱一年，还要啥自行车…….</p>
@@ -240,6 +240,13 @@
 <iframe src="//player.bilibili.com/player.html?aid=44358700&cid=77667784&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 <p><strong><em>吐槽</em></strong>：满怀兴致的安装，结果在配置好域名（另外购买了个域名），安装好wordpess之后，被要求备案！！damnit,备案时间跨度得近20天，欲哭无泪（不管在哪购买的域名，只要服务器在国内，就要求备案）。就此中断一段时间，备案完成之后再折腾。</p>
+<h4 id="小插曲-在虚拟机中搭建本地服务器"><a href="#小插曲-在虚拟机中搭建本地服务器" class="headerlink" title="[小插曲]在虚拟机中搭建本地服务器"></a>[小插曲]在虚拟机中搭建本地服务器</h4><blockquote>
+<p>服务器这个东东，其实就是一台24小时开机的电脑，本质来说还是电脑，只是云服务器它有一个公网IP，而我在虚拟机中搭建一个服务器只能在本地访问（内网穿透也可以使它可在外网访问），所以区别就是不能在外网访问，但是可以让我在服务器漫长的备案期间折腾折腾，并且在本地折腾一遍练练手，可以提高在云服务器中配置功能的成功率呀。</p>
+</blockquote>
+<h5 id="配置虚拟机服务器"><a href="#配置虚拟机服务器" class="headerlink" title="配置虚拟机服务器"></a>配置虚拟机服务器</h5><p>虚拟机中服务器我采用的是<code>ubuntu server 18.**</code>的镜像，这是专门为服务器提供的镜像，大小只有800M左右，和<code>ubuntu</code>的发行版镜像不一样，这个服务器版是没有图形界面的，只有命令行界面，当然我觉得采用非服务器版镜像也行，比如：<code>centos</code>、<code>fedaro</code>等发行版。<br>配置好之后，还是在物理机上使用<code>Xshell</code>连接上虚拟机吧，方便~然后开启ssh,设置为开机自启动：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start ssh #开启</span><br><span class="line">systemctl enable ssh #开机自启动</span><br></pre></td></tr></table></figure></p>
+<h5 id="安装宝塔面板"><a href="#安装宝塔面板" class="headerlink" title="安装宝塔面板"></a>安装宝塔面板</h5><p>………..常规操作，安装宝塔面板……………<br><em>tips</em>:这有一个小问题，宝塔面板安装之后，它给出的<code>IP</code>是物理机的外网IP，所以如果正确的登录宝塔面板的后台需要把IP替换为虚拟机的<code>局域网IP</code>,端口<code>8888</code>不变。<br>然后又是常规操作，安装nginx等套件，PhP安装版本&gt;=7.2的版本，并且查看nginx和PhP是否正常开启。（我在这翻车就是因为nginx未启动）</p>
+<h5 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h5><p>找到电脑路径<code>C:\Windows\System32\drivers\etc</code>下的<code>hosts</code>文件，增加“本地域名解析”<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">你的虚拟机IP    域名（随便）</span><br></pre></td></tr></table></figure></p>
+<h5 id="End"><a href="#End" class="headerlink" title="End"></a>End</h5><p>这就基本上OK了，可以在网页中建立自己的网站啦，比如安装<code>wordpress</code>等。</p>
 
         </div>
         
@@ -462,7 +469,27 @@
         <a class="is-flex" href="#第一次折腾——搭建个人站点">
         <span class="has-mr-6">2</span>
         <span>第一次折腾——搭建个人站点</span>
-        </a></li></ul>
+        </a></li><li>
+        <a class="is-flex" href="#小插曲-在虚拟机中搭建本地服务器">
+        <span class="has-mr-6">3</span>
+        <span>[小插曲]在虚拟机中搭建本地服务器</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#配置虚拟机服务器">
+        <span class="has-mr-6">3.1</span>
+        <span>配置虚拟机服务器</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装宝塔面板">
+        <span class="has-mr-6">3.2</span>
+        <span>安装宝塔面板</span>
+        </a></li><li>
+        <a class="is-flex" href="#修改hosts文件">
+        <span class="has-mr-6">3.3</span>
+        <span>修改hosts文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#End">
+        <span class="has-mr-6">3.4</span>
+        <span>End</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
