@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="Fourier&#39;s Blog">
 <meta property="og:description" content="偶然的机会了解到了manjaro这个linux发行版本，顿时被它迷住了，再加上win频频让我更新，导致我的vmware workstation不能使用好几次，故决定放弃win,给物理机安装manjaro;本文章是本人安装过程及学习过程的一系列记录，持续更新…….">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T09:19:04.593Z">
+<meta property="og:updated_time" content="2019-11-28T02:01:14.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="manjaro配置">
 <meta name="twitter:description" content="偶然的机会了解到了manjaro这个linux发行版本，顿时被它迷住了，再加上win频频让我更新，导致我的vmware workstation不能使用好几次，故决定放弃win,给物理机安装manjaro;本文章是本人安装过程及学习过程的一系列记录，持续更新…….">
@@ -212,7 +212,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 分钟 读完 (大约 2791 个字)
+                    19 分钟 读完 (大约 2864 个字)
                 </span>
                 
                 
@@ -238,10 +238,10 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-mirrors -g  # 排列源，可不执行</span><br><span class="line">sudo pacman-mirrors -c China -m rank # 更改源，在跳出的对话框里选择想要的源</span><br></pre></td></tr></table></figure>
 <p>增加arch中文社区的源，加速安装软件，在 <code>/etc/pacman.conf</code> 中添加 <code>archlinuxcn</code> 源，在其末尾加上：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
-<p>安装 archlinuxcn-keyring 包以导入 GPG key，否则的话 key 验证失败会无法安装：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
 <p>同步并更新系统：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
+<p>安装 archlinuxcn-keyring 包以导入 GPG key，否则的话 key 验证失败会无法安装：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
 <h4 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h4><p>fcitx 是 Free Chinese Input Toy for X 的缩写，国内也常称作小企鹅输入法，是一款 Linux 下的中文输入法:</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx-googlepinyin</span><br><span class="line">sudo pacman -S fcitx-im # 选择全部安装</span><br><span class="line">sudo pacman -S fcitx-configtool # 安装图形化配置工具</span><br><span class="line">sudo pacman -S fcitx-skin-material</span><br></pre></td></tr></table></figure>
 <p>解决中文输入法无法切换问题: 添加文件 ~/.xprofile：</p>
@@ -270,8 +270,8 @@
 <p>yay 的常用命令：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yay -S package # 从 AUR 安装软件包</span><br><span class="line">yay -Rns package # 删除包</span><br><span class="line">yay -Syu # 升级所有已安装的包</span><br><span class="line">yay -Ps # 打印系统统计信息</span><br><span class="line">yay -Qi package # 检查安装的版本</span><br><span class="line">yay 安装命令不需要加 sudo。</span><br></pre></td></tr></table></figure>
 <h4 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h4><p><a href="https://ohmyz.sh/" target="_blank" rel="noopener">zsh</a>是一个非常好用的shell，具有强大的自动补全功能，尤其在使用pacman/yay安装软件时，可以自动补全软件名。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S zsh # 安装zsh</span><br><span class="line">echo $SHELL # 查看大概年前 shell</span><br><span class="line">chsh -s /bin/zsh # 修改默认shell，这个是修改当前用户的终端，如果要修改 root 账户，需要切换到 root用户</span><br><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br><span class="line">sudo pacman -S autojump</span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
-<p>重启shell生效</p>
+<p> 以下方法经过自己多次实验，因为恶心的GFW存在，CTM的上个github都被限制，所以到第四步失效。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S zsh # 安装zsh</span><br><span class="line">echo $SHELL # 查看大概年前 shell</span><br><span class="line">chsh -s /bin/zsh # 修改默认shell，这个是修改当前用户的终端，如果要修改 root 账户，需要切换到 root用户</span><br><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br><span class="line">sudo pacman -S autojump</span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure></p>
+<p>由于以上方法失效，建议可以使用此博主配置zsh的教程<a href="https://coreja.com/DailyHack/2019/08/config-your-super-zsh/" target="_blank" rel="noopener">zsh配置教程</a>  </p>
 <h4 id="安装常用软件"><a href="#安装常用软件" class="headerlink" title="安装常用软件"></a>安装常用软件</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"># deepin 系的软件</span><br><span class="line">sudo pacman -S deepin-picker # 深度取色器</span><br><span class="line">sudo pacman -S deepin-screen-recorder # 录屏软件，可以录制 Gif 或者 MP4 格式</span><br><span class="line">sudo pacman -S deepin-screenshot # 深度截图</span><br><span class="line">sudo pacman -S deepin-system-monitor # 系统状态监控</span><br><span class="line">yay -s deepin-wine-wechat</span><br><span class="line">yay -S deepin-wine-tim</span><br><span class="line">yay -S deepin-wine-baidupan</span><br><span class="line">yay -S deepin.com.thunderspeed</span><br><span class="line">  </span><br><span class="line"># 开发软件</span><br><span class="line">sudo pacman -S jdk8-openjdk</span><br><span class="line">sudo pacman -S make</span><br><span class="line">sudo pacman -S cmake</span><br><span class="line">sudo pacman -S clang</span><br><span class="line">sudo pacman -S nodejs</span><br><span class="line">sudo pacman -S npm</span><br><span class="line">sudo pacman -S goland</span><br><span class="line">sudo pacman -S vim</span><br><span class="line">sudo pacman -S maven</span><br><span class="line">sudo pacman -S pycharm-professional # Python IDE</span><br><span class="line">sudo pacman -S intellij-idea-ultimate-edition # JAVA IDE</span><br><span class="line">sudo pacman -S goland # Go IDE</span><br><span class="line">sudo pacman -S visual-studio-code-bin # vscode</span><br><span class="line">sudo pacman -S qtcreator # 一款QT开发软件</span><br><span class="line">sudo pacman -S postman-bin</span><br><span class="line">sudo pacman -S insomnia # REST模拟工具</span><br><span class="line">sudo pacman -S gitkraken # GIT管理工具</span><br><span class="line">sudo pacman -S wireshark-qt # 抓包</span><br><span class="line">sudo pacman -S zeal</span><br><span class="line">sudo pacman -S gitkraken # Git 管理工具</span><br><span class="line">  </span><br><span class="line"># 办公软件</span><br><span class="line">sudo pacman -S google-chrome</span><br><span class="line">sudo pacman -S foxitreader # pdf 阅读</span><br><span class="line">sudo pacman -S bookworm # 电子书阅读</span><br><span class="line">sudo pacman -S unrar unzip p7zip</span><br><span class="line">sudo pacman -S goldendict # 翻译、取词</span><br><span class="line">sudo pacman -S wps-office</span><br><span class="line">sudo pacman -S ttf-wps-fonts  #按装wps缺失字体  </span><br><span class="line">yay -S typora # markdown 编辑</span><br><span class="line">yay -S electron-ssr # 缺少我需要的加密算法</span><br><span class="line">yay -S xmind</span><br><span class="line">  </span><br><span class="line"># 设计</span><br><span class="line">sudo pacman -S pencil # 免费开源界面原型图绘制工具</span><br><span class="line">  </span><br><span class="line"># 娱乐软件</span><br><span class="line">sudo pacman -S netease-cloud-music</span><br><span class="line">  </span><br><span class="line"># 下载软件</span><br><span class="line">sudo pacman -S aria2</span><br><span class="line">sudo pacman -S filezilla  # FTP/SFTP</span><br><span class="line">  </span><br><span class="line"># 图形</span><br><span class="line">sudo pacman -S gimp # 修图</span><br><span class="line">  </span><br><span class="line"># 系统工具</span><br><span class="line">sudo pacman -S albert #类似Mac Spotlight，另外一款https://cerebroapp.com/</span><br><span class="line">yay -S copyq #  剪贴板工具，类似 Windows 上的 Ditto</span><br><span class="line">sudo pacman -S gufw	#安装防火墙	Linux 世界中最简单的防火墙之一</span><br><span class="line">  </span><br><span class="line"># 终端</span><br><span class="line">sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A &apos;Arch Linux&apos;</span><br><span class="line">sudo pacman -S htop     #可以在终端中直接管理进程</span><br><span class="line">sudo pacman -S bat</span><br><span class="line">sudo pacman -S yakuake # 堪称 KDE 下的终端神器，KDE 已经自带，F12 可以唤醒</span><br><span class="line">sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat</span><br><span class="line">yay -S tldr</span><br><span class="line">yay -S tig # 命令行下的 git 历史查看工具</span><br><span class="line">yay -S tree</span><br><span class="line">yay -S ncdu # 命令行下的磁盘分析器，支持Vim操作</span><br><span class="line">yay -S mosh # 一款速度更快的 ssh 工具，网络不稳定时使用有奇效</span><br><span class="line">systemctl start sshd.service #启动ssh</span><br></pre></td></tr></table></figure>
 <p>OK，以上就是一些安装manjaro之后的常规配置</p>
 <hr>
@@ -446,7 +446,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        26
                     </p>
                 </div>
             </div>
@@ -456,7 +456,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
@@ -652,6 +652,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/28/Linux只应该活在服务器里？.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/landscape-1802337__340.webp" alt="Linux只应该活在服务器里？">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T09:39:02.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/Linux只应该活在服务器里？.html" class="has-link-black-ter is-size-6">Linux只应该活在服务器里？</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/随笔/">随笔</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/23/win神器Listary调用GoldenDict查词.html" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/street_building_pedestrian_daytime_walk-279.jpg" alt="win神器Listary调用GoldenDict查词">
@@ -726,25 +745,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/04/记录更换icarus主题.html" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/d01e642612c9f5d4d16e0e13a286-1427847.jpg" alt="更换icarus主题">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-04T15:20:06.000Z">2019-10-04</time></div>
-                    <a href="/2019/10/04/记录更换icarus主题.html" class="has-link-black-ter is-size-6">更换icarus主题</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/工具教程/">工具教程</a> / <a class="has-link-grey -link" href="/categories/工具教程/主题工具/">主题工具</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -763,7 +763,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -936,6 +936,14 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/随笔/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/集成电路/">
             <span class="level-start">
                 <span class="level-item">集成电路</span>
@@ -995,7 +1003,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linux/">
                         <span class="tag">linux</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1058,7 +1066,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/随笔/">
                         <span class="tag">随笔</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1080,7 +1088,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/NC/" style="font-size: 10px;">NC</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/hexo主题/" style="font-size: 12.5px;">hexo主题</a> <a href="/tags/kali-linux/" style="font-size: 12.5px;">kali linux</a> <a href="/tags/linux/" style="font-size: 17.5px;">linux</a> <a href="/tags/manjaro/" style="font-size: 10px;">manjaro</a> <a href="/tags/win软件/" style="font-size: 10px;">win软件</a> <a href="/tags/云服务器/" style="font-size: 10px;">云服务器</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/笔记/" style="font-size: 17.5px;">笔记</a> <a href="/tags/考研/" style="font-size: 10px;">考研</a> <a href="/tags/课程设计/" style="font-size: 10px;">课程设计</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/集成电路/" style="font-size: 12.5px;">集成电路</a>
+        <a href="/tags/NC/" style="font-size: 10px;">NC</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/hexo主题/" style="font-size: 12.5px;">hexo主题</a> <a href="/tags/kali-linux/" style="font-size: 12.5px;">kali linux</a> <a href="/tags/linux/" style="font-size: 17.5px;">linux</a> <a href="/tags/manjaro/" style="font-size: 10px;">manjaro</a> <a href="/tags/win软件/" style="font-size: 10px;">win软件</a> <a href="/tags/云服务器/" style="font-size: 10px;">云服务器</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/考研/" style="font-size: 10px;">考研</a> <a href="/tags/课程设计/" style="font-size: 10px;">课程设计</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/集成电路/" style="font-size: 12.5px;">集成电路</a>
     </div>
 </div>
 
