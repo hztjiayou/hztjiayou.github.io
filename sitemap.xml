@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hztjiayou.github.io/about/index.html</loc>
+    
+    <lastmod>2019-11-28T16:02:45.630Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hztjiayou.github.io/2019/11/28/Linux%E5%8F%AA%E5%BA%94%E8%AF%A5%E6%B4%BB%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8C%EF%BC%9F.html</loc>
     
     <lastmod>2019-11-28T12:19:43.089Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>https://hztjiayou.github.io/2019/11/06/My-first-cloud-server.html</loc>
     
     <lastmod>2019-11-21T01:32:41.048Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hztjiayou.github.io/about/index.html</loc>
-    
-    <lastmod>2019-11-11T16:07:08.662Z</lastmod>
     
   </url>
   
@@ -233,14 +233,14 @@
   </url>
   
   <url>
-    <loc>https://hztjiayou.github.io/abouta/index.html</loc>
+    <loc>https://hztjiayou.github.io/categories/index.html</loc>
     
     <lastmod>2019-09-29T13:17:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hztjiayou.github.io/categories/index.html</loc>
+    <loc>https://hztjiayou.github.io/abouta/index.html</loc>
     
     <lastmod>2019-09-29T13:17:56.000Z</lastmod>
     
