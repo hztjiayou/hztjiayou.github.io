@@ -2,13 +2,13 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>hexo+github+个人域名搭建博客教程 - Fourier&#39;s Blog</title>
+<title>hexo搭建博客以及移植博客 - Fourier&#39;s Blog</title>
 <meta charset="utf-8" />
 
 <meta name="generator" content="Hexo 3.9.0" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>hexo+github+个人域名搭建博客教程 - Fourier&#39;s Blog</title>
+<title>hexo搭建博客以及移植博客 - Fourier&#39;s Blog</title>
 
 <meta name="google-site-verification" content="67z1CXZ8AOhImIglgTwqAlneRCHTO6xRJo5NeafDAqw" />
 <script>
@@ -29,7 +29,7 @@
     <meta name="description" content="前前后后折腾了这么久搭建了这个博客，现在配置的也算是合格了，写这篇文章记录下搭建过程；">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+github+个人域名搭建博客教程">
+<meta property="og:title" content="hexo搭建博客以及移植博客">
 <meta property="og:url" content="https://hztjiayou.github.io/2019/05/28/hexo搭建github博客教程.html">
 <meta property="og:site_name" content="Fourier&#39;s Blog">
 <meta property="og:description" content="前前后后折腾了这么久搭建了这个博客，现在配置的也算是合格了，写这篇文章记录下搭建过程；">
@@ -37,15 +37,15 @@
 <meta property="og:image" content="https://hztjiayou.github.io/assets/img/p1.jpg">
 <meta property="og:image" content="https://hztjiayou.github.io/assets/img/error1.jpg">
 <meta property="og:image" content="https://hztjiayou.github.io/assets/img/youmeng.jpg">
-<meta property="og:updated_time" content="2019-10-10T03:07:26.000Z">
+<meta property="og:updated_time" content="2019-11-29T12:35:28.416Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo+github+个人域名搭建博客教程">
+<meta name="twitter:title" content="hexo搭建博客以及移植博客">
 <meta name="twitter:description" content="前前后后折腾了这么久搭建了这个博客，现在配置的也算是合格了，写这篇文章记录下搭建过程；">
 <meta name="twitter:image" content="https://hztjiayou.github.io/assets/img/p1.jpg">
 
 
 
-<link rel="alternative" href="/atom.xml" title="hexo+github+个人域名搭建博客教程" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="hexo搭建博客以及移植博客" type="application/atom+xml">
 
 
 
@@ -121,7 +121,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/tubiao.jpg" alt="hexo+github+个人域名搭建博客教程" height="28">
+                <img src="/images/tubiao.jpg" alt="hexo搭建博客以及移植博客" height="28">
             
             </a>
         </div>
@@ -206,7 +206,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 708 个字)
+                    6 分钟 读完 (大约 947 个字)
                 </span>
                 
                 
@@ -220,7 +220,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                hexo+github+个人域名搭建博客教程
+                hexo搭建博客以及移植博客
             
         </h1>
         <div class="content">
@@ -283,6 +283,17 @@
 <p>之后重新部署就OK了</p>
 <h4 id="2-页面点击有心"><a href="#2-页面点击有心" class="headerlink" title="2.页面点击有心"></a>2.页面点击有心</h4><p>在<code>themes\yilia\layout_partial\footer.ejs</code>最后添加以下代码</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--页面点击小红心--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/love.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><em>2019年11月29日更新</em><br>博客搭建这么久了，从最开始的什么都不懂到现在略懂一二，也从最开始的<code>yilia</code>主题换到了现在的<code>icaus</code>主题，到现在对于hexo搭建博客也有相关经验，觉得hexo搭建博客还是挺方便的。<br>比如在重装系统，更换电脑等情况，只需要把你的博客文件拷贝一份，然后在你的新电脑上：</p>
+<ol>
+<li>安装node.js</li>
+<li>安装git</li>
+<li>安装hexo-cli</li>
+<li>创建一个博客文件 hexo init</li>
+<li>把生成的文件删除，把自己原先的博客文件放进去</li>
+</ol>
+<p>就很好的解决重装系统的问题。</p>
+<p>而且，对于双系统，如<code>win</code>+<code>linux</code>，linux能够读取win下盘的资料的情况下，只用在linux系统安装git+node,就可以方便的编辑、预览、部署你的博客了。</p>
 
         </div>
         
@@ -1048,7 +1059,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/tubiao.jpg" alt="hexo+github+个人域名搭建博客教程" height="28">
+                    <img src="/images/tubiao.jpg" alt="hexo搭建博客以及移植博客" height="28">
                 
                 </a>
                 <p class="is-size-7">
