@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hztjiayou.github.io/friend/index.html</loc>
+    
+    <lastmod>2019-11-29T12:00:41.544Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hztjiayou.github.io/about/index.html</loc>
     
     <lastmod>2019-11-28T16:02:45.630Z</lastmod>
@@ -219,21 +226,14 @@
   </url>
   
   <url>
-    <loc>https://hztjiayou.github.io/friend/index.html</loc>
-    
-    <lastmod>2019-10-05T15:24:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hztjiayou.github.io/caidan.html</loc>
+    <loc>https://hztjiayou.github.io/categories/index.html</loc>
     
     <lastmod>2019-09-29T13:17:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hztjiayou.github.io/categories/index.html</loc>
+    <loc>https://hztjiayou.github.io/caidan.html</loc>
     
     <lastmod>2019-09-29T13:17:56.000Z</lastmod>
     
