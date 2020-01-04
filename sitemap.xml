@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hztjiayou.github.io/about/index.html</loc>
+    
+    <lastmod>2019-12-02T16:57:23.585Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hztjiayou.github.io/2019/05/28/hexo%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B.html</loc>
     
     <lastmod>2019-11-29T12:35:28.416Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://hztjiayou.github.io/friend/index.html</loc>
     
     <lastmod>2019-11-29T12:00:41.544Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hztjiayou.github.io/about/index.html</loc>
-    
-    <lastmod>2019-11-28T16:02:45.630Z</lastmod>
     
   </url>
   
@@ -226,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://hztjiayou.github.io/categories/index.html</loc>
-    
-    <lastmod>2019-09-29T13:17:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://hztjiayou.github.io/caidan.html</loc>
     
     <lastmod>2019-09-29T13:17:56.000Z</lastmod>
@@ -248,6 +241,13 @@
   
   <url>
     <loc>https://hztjiayou.github.io/tags/index.html</loc>
+    
+    <lastmod>2019-09-29T13:17:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hztjiayou.github.io/categories/index.html</loc>
     
     <lastmod>2019-09-29T13:17:56.000Z</lastmod>
     
