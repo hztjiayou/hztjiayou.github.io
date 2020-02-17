@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>linux学习Day_2 - HZT&#39;s Blog</title>
+<meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>linux学习Day_2 - HZT&#39;s Blog</title>
+
+<meta name="google-site-verification" content="67z1CXZ8AOhImIglgTwqAlneRCHTO6xRJo5NeafDAqw" />
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    <meta name="description" content="U盘挂载；压缩命令；进程管理；网络管理；ftp、nfs、ssh使用；">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux学习Day_2">
+<meta property="og:url" content="https://hztjiayou.github.io/2019/05/30/linux学习Day-2.html">
+<meta property="og:site_name" content="HZT&#39;s Blog">
+<meta property="og:description" content="U盘挂载；压缩命令；进程管理；网络管理；ftp、nfs、ssh使用；">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hztjiayou.github.io/assets/img/Linux磁盘结构.jpg">
+<meta property="og:image" content="https://hztjiayou.github.io/assets/img/linux管道.jpg">
+<meta property="og:updated_time" content="2019-06-16T16:14:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux学习Day_2">
+<meta name="twitter:description" content="U盘挂载；压缩命令；进程管理；网络管理；ftp、nfs、ssh使用；">
+<meta name="twitter:image" content="https://hztjiayou.github.io/assets/img/Linux磁盘结构.jpg">
+
+
+
+<link rel="alternative" href="/atom.xml" title="linux学习Day_2" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/panda.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/live2d/waifu.css">
+    <!-- <meta name="referrer" content="no-referrer" /> 解决图片过期问题-->
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/tubiao.jpg" alt="linux学习Day_2" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/message">留言</a>
+                
+                <a class="navbar-item"
+                href="https://www.leimulamu.com/">观影</a>
+                
+                <a class="navbar-item"
+                href="/music">音乐</a>
+                
+                <a class="navbar-item"
+                href="/Todo">Todo</a>
+                
+                <a class="navbar-item"
+                href="/friend">友链</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="https://wangchujiang.com/linux-command/">LinuxCmd</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hztjiayou">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2019-05-30T14:28:30.000Z">2019-05-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 分钟 读完 (大约 2212 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    1<span id="busuanzi_value_page_pv"></span> 次查看
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                linux学习Day_2
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>U盘挂载；压缩命令；进程管理；网络管理；ftp、nfs、ssh使用；</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="1-U盘挂载和卸载"><a href="#1-U盘挂载和卸载" class="headerlink" title="1.U盘挂载和卸载"></a>1.U盘挂载和卸载</h3><p>首先了解linux系统下U盘默认是挂载在media目录下，如果默认没有挂载，手动挂载到mnt目录。</p>
+<p>1.挂载：sudo  mount   deviecename    /mnt<br>    执行上面这一步先要知道U盘在linux系统中的名字，使用命令：sudo  fdisk   -l</p>
+<p>2.卸载：sudo   umount   /mnt        (/mnt为挂载目录)</p>
+<p>3.扩展————Linux系统的磁盘结构</p>
+<p><img src="\assets\img\Linux磁盘结构.jpg" alt="Linux磁盘结构"></p>
+<h3 id="2-压缩包管理"><a href="#2-压缩包管理" class="headerlink" title="2.压缩包管理"></a>2.压缩包管理</h3><p>1.屌丝版</p>
+<ul>
+<li><p>gzip  文件            #压缩文件之后原文件删除，并且 使用 <code>gzip *.txt</code>压缩的所有txt文件，压缩后不会打包，是分别压缩；    解压缩: gunzip     *.gz</p>
+</li>
+<li><p>bzip2    文件        # 压缩文件之后源文件删除，加参数 -k 可保留，<code>bzip2  *.txt</code>压缩所有txt文件是分别压缩，不打包        解压缩：bunzip2   *.bz2</p>
+</li>
+</ul>
+<p>2.高富帅版</p>
+<ul>
+<li><h5 id="tar——如果不适用-z-j-参数，给命令只是对文件或者目录打包"><a href="#tar——如果不适用-z-j-参数，给命令只是对文件或者目录打包" class="headerlink" title="tar——如果不适用 z  j 参数，给命令只是对文件或者目录打包"></a>tar——如果不适用 z  j 参数，给命令只是对文件或者目录打包</h5><p>​    参数：</p>
+<p>​        c——创建——压缩</p>
+<p>​        x——释放——解压缩</p>
+<p>​        v——显示提示信息——可以省略</p>
+<p>​        f——指定压缩文件的名字</p>
+<p>​        </p>
+<p>​        z——使用gzip的方式压缩文件——.gz</p>
+<p>​        j——使用bzip2的方式压缩文件——.bz2</p>
+<p>​    压缩：</p>
+<p>​        tar zcvf  生成的压缩包的名字   要压缩的文件或者目录</p>
+<p>​        tar  jcvf  生成的压缩包的名字    要压缩的文件或者目录</p>
+<p>​    解压缩：</p>
+<p>​        tar     jxvf/zcvf   压缩包的名字    -C(解压到指定目录参数)    指定目录</p>
+</li>
+<li><h6 id="rar——-用户手动安装"><a href="#rar——-用户手动安装" class="headerlink" title="rar——   用户手动安装"></a>rar——   用户手动安装</h6><p>​    参数：</p>
+<p>​        压缩：a</p>
+<p>​        解压缩：x</p>
+<p>​    压缩：</p>
+<p>​        rar  a  生成的压缩文件名字（不需要带后缀）    压缩的文件或目录</p>
+<p>​    解压缩：</p>
+<p>​        rar  x    生成的压缩文件名字        压缩的文件或目录</p>
+</li>
+<li><h5 id="zip——"><a href="#zip——" class="headerlink" title="zip——"></a>zip——</h5><p>​    参数：</p>
+<p>​        压缩目录要加参数  -r</p>
+<p>​    压缩：</p>
+<p>​        zip     -r (压缩目录参数)    压缩包的名字（不要指定后缀）  压缩的文件或者目录</p>
+<p>​     解压缩：</p>
+<p>​        unzip   压缩包文件    </p>
+<p>​        unzip   压缩包文件    -d    解压缩到指定目录</p>
+</li>
+<li><h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><p>​    相同之处：</p>
+<p>​        tar/rar/zip    参数    生成的压缩文件名字    压缩的文件或目录</p>
+<p>​        tar/rar/unzip    参数    生成的压缩文件名字        压缩的文件或者目录</p>
+</li>
+</ul>
+<h3 id="3-进程管理"><a href="#3-进程管理" class="headerlink" title="3.进程管理"></a>3.进程管理</h3><p>只要是一个应用程序启动就有进程</p>
+<p>输入：<code>who</code> 查看当前在线用户情况，一般显示有登陆的用户名、登陆的终端设备、登陆到系统的时间：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hzt      :0           2019-05-30 06:35 (:0)		//：0表示的是图形界面 ，也称tty7</span><br><span class="line">hzt      pts/2        2019-05-30 20:16 (192.168.150.1)</span><br></pre></td></tr></table></figure>
+<p>在linux中有  tty1——tty6表示文字界面（切换ctrl + alt + [f1-f6]），tty7表示图形界面(切换ctrl + alt + [    f7])。之间互不影响。ps:经过测试，发现我的ubuntu 返回图形界面的快捷键是 ctrl alt f1</p>
+<h4 id="进程："><a href="#进程：" class="headerlink" title="进程："></a>进程：</h4><p>ps    aux</p>
+<p>​    参数： a   列出当前所有的用户的进程</p>
+<p>​              u   列出用户自己的进程信息</p>
+<p>​              x   查看没有有终端（没有tty）的应用程序进程</p>
+<p>但是查找到的进程数量太多了，难以查看自己要找的进程，所以就要使用到——<code>管道</code></p>
+<h4 id="管道（-）"><a href="#管道（-）" class="headerlink" title="管道（|）"></a>管道（|）</h4><p>管道就是把一个命令的输入作为另一个命令的输入</p>
+<p><img src="\assets\img\linux管道.jpg" alt="linux管道"></p>
+<p>由上图可见，指令1的输出给了指令2 ，指令2再把输出显示在屏幕上</p>
+<p>由此就可以使用管道并使用grep 命令查找所要的进程</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep 查找关键词</span><br></pre></td></tr></table></figure>
+<p>注意：查找出来的进程数如果只有一条，表示没有查询的进程，因为grep命令需要开启一个进程，所以实际进程数等于查询进程数减一；</p>
+<h4 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h4><p>作用：杀死进程</p>
+<p>命令：kill -l   查看64个信号</p>
+<p>​         kill  -SIGKILL/-9（查看到的信号，9表示信号数值）  进程的PID</p>
+<h4 id="查看当前进程的环境变量"><a href="#查看当前进程的环境变量" class="headerlink" title="查看当前进程的环境变量"></a>查看当前进程的环境变量</h4><p>env——查看当前进程的所有的环境变量设置        <code>env | grep PATH</code>利用管道查看PTAH</p>
+<p>​    linux 下的环境变量的格式：key = value :value:value:value(每一个环境变量之间用：隔开)</p>
+<p>top——相当于win的任务管理器，</p>
+<h3 id="4-网络管理"><a href="#4-网络管理" class="headerlink" title="4.网络管理"></a>4.网络管理</h3><h4 id="网络相关的命令"><a href="#网络相关的命令" class="headerlink" title="网络相关的命令"></a>网络相关的命令</h4><p>ifconfig:</p>
+<p>​    eth0——代表的是网卡0        硬件地址（ether）：mac地址</p>
+<p>​    lo——回环地址        inet:本地回环地址</p>
+<p>ping :</p>
+<p>​    参数： -c   4    ——回馈四条信息结束</p>
+<p>​            -i   4 ——每隔多少秒回馈</p>
+<p>nslookup:</p>
+<p>​    查看域名的IP</p>
+<h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><ul>
+<li><em>创建用户</em>：</li>
+</ul>
+<p>​        sudo   adduser   用户名    (不可创建大写字母的用户名)</p>
+<p>​        sudo  -s /bin/bash -g   Robin  -d  /home/bin    -m   Robin</p>
+<p>​        解析：sudo   useradd   -s(使用什么类型的命令解析器)    /bin/bash(使用bash的命令解析器)   -g(用户所属的组)   Robin（指定的组）   -d （指定用户加目录）  /home/Robin  (用户家目录)   -m（如果加目录不存在则创建一个）   Robin    </p>
+<p>​        添加用户组： sudo groupadd   组名            </p>
+<ul>
+<li><p><em>用户删除</em>：</p>
+<p>​        sudo deluser  用户名    （删除之后用户的家目录还在，使用rm -r 删除）</p>
+<p>​        sudo userdel    -r    用户名    （删除干净）</p>
+</li>
+<li><p><em>查看linux系统下的用户，要去到一个存放配置的文件：/etc/passwd</em></p>
+</li>
+<li><p><em>切换用户</em>：su   用户名</p>
+</li>
+<li><p><em>退出用户</em>：exit</p>
+</li>
+<li><p><em>修改其他用户密码</em>：sudo  passwd   用户</p>
+</li>
+<li><p><em>修改当前用户的密码</em>：passwd</p>
+</li>
+<li><p><em>修改root用户密码</em>：sudo  passwd  root</p>
+</li>
+</ul>
+<h3 id="ftp服务器搭建——其实就是服务器软件的使用——推荐-vsftpd"><a href="#ftp服务器搭建——其实就是服务器软件的使用——推荐-vsftpd" class="headerlink" title="ftp服务器搭建——其实就是服务器软件的使用——推荐 vsftpd"></a>ftp服务器搭建——其实就是服务器软件的使用——推荐 vsftpd</h3><p><em>作用：负责文件的上传和下载</em></p>
+<h4 id="1-服务器端"><a href="#1-服务器端" class="headerlink" title="1.服务器端"></a>1.服务器端</h4><ul>
+<li><p>修改配置文件:——如何修改配置文件</p>
+<p>​    配置文件所在目录：/etc/vsftpd.conf</p>
+<p>​    修改： vsftpd.conf</p>
+</li>
+<li><p>重启服务:——什么命令可以重启服务     sudo   service   vsftpd  restart</p>
+</li>
+</ul>
+<h4 id="2-客户端"><a href="#2-客户端" class="headerlink" title="2.客户端"></a>2.客户端</h4><ul>
+<li><p>实名用户登陆</p>
+<p>​    ftp   IP(server):</p>
+<p>​    实名输入用户名（server）：</p>
+<p>​    实名输入密码：nami</p>
+<p>​        </p>
+<p>​    文件的上传：put       文件名（只能上传下载文件，不可操作目录，操作目录可打包压缩）</p>
+<p>​    文件的下载:   get     文件名</p>
+</li>
+<li><p>匿名用户登陆:</p>
+<p>​    ftp serverIP</p>
+<p>​    用户名：anonymous</p>
+<p>​    密码：直接回车跳过</p>
+<p>​    不允许匿名用户在任意目录直接切换，只能在指定的目录范围工作</p>
+<p>​    设定匿名用户的访问目录：更改配置文件，添加：anon_root=/home/目录</p>
+</li>
+<li><p>lftp客户端访问ftp服务器</p>
+<p>​    <em>lftp是一个客户端工具，可以上传下载目录</em></p>
+<p>​        软件安装： sudo apt install lftp</p>
+<p>​        登陆服务器：</p>
+<p>​            匿名：lftp        serverIP</p>
+<p>​            实名：lftp </p>
+<p>​        查看登陆之前的目录：lpwd    </p>
+<p>​        切换登陆之前的目录：lcd</p>
+<p>​        上传文件：put</p>
+<p>​        下载文件：get</p>
+<p>​        上传多个文件：mput   文件1  文件2</p>
+<p>​        下载多个文件：mget</p>
+<p>​        下载整个目录及其子目录：mirror</p>
+<p>​        上传整个目录及其子目录：mirror -R</p>
+</li>
+</ul>
+<h3 id="nfs服务器搭建"><a href="#nfs服务器搭建" class="headerlink" title="nfs服务器搭建"></a>nfs服务器搭建</h3><p><em>网络文件系统，它允许网络中计算机之间通过TCP/IP网络共享资源</em></p>
+<p>安装软件：sudo  apt-get  install nfs-kernel-server</p>
+<h4 id="1-服务器端-1"><a href="#1-服务器端-1" class="headerlink" title="1.服务器端"></a>1.服务器端</h4><ul>
+<li>创建共享目录    mkdir 目录</li>
+<li>修改配置文件      /etc/exports          增加一行  /home/用户/目录       <em> (rw,sync)      (</em>代指IP网段,rw可读可写，数据实时更新内存到磁盘）</li>
+<li>重启服务             sudo service     nfs-kernel-service            restart</li>
+</ul>
+<h4 id="2-客户端-1"><a href="#2-客户端-1" class="headerlink" title="2.客户端"></a>2.客户端</h4><ul>
+<li><p>挂载服务器共享目录</p>
+<p> mount  serviceIP:sharedir    /mnt        (sharedir是共享目录，挂载到mnt下)</p>
+</li>
+</ul>
+<h3 id="ssh服务器"><a href="#ssh服务器" class="headerlink" title="ssh服务器"></a>ssh服务器</h3><ul>
+<li><p>服务器端</p>
+<p>​    安装ssh：sudo apt install ssh</p>
+</li>
+</ul>
+<ul>
+<li><p>客户端</p>
+<p>​    远程登陆：ssh   用户名@IP<br>​    退出登陆：logout</p>
+</li>
+</ul>
+<h3 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h3><p>​    scp = super copy   能在不同的主机之间进行拷贝</p>
+<p>​    使用该命令的前提条件：目标主机已经成功安装 openssh-server</p>
+<p>​    使用格式：scp -r  目标用户名@目标IP地址：/目标文件的绝对路径    /保存到本机的绝对路径（参数 -r 是拷贝目录）</p>
+<p>参考：黑马程序员 <a href="https://www.bilibili.com/video/av33660709/?p=43&gt;" target="_blank" rel="noopener">https://www.bilibili.com/video/av33660709/?p=43&gt;</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/linux/">linux</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/01/linux学习Day-3.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">linux学习Day_3</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/30/linux学习Day-1.html">
+                <span class="level-item">linux学习Day_1</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'NXFUbBGEhbCBH8V94r8uOxpX-gzGzoHsz',
+        app_key: 'cBEVo6qylQrXl34Ks162qXe4',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/assets/img/me.jpg" alt="huangzhentao">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        huangzhentao
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        你要安静的优秀，悄无声息的坚强
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hunan.China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        17
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hztjiayou" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/hztjiayou">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://github.com/hztjiayou ">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://github.com/hztjiayou ">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://github.com/hztjiayou ">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.cnblogs.com/hztjiayou/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">博客园</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.cnblogs.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.zhihu.com/people/huang-zhen-tao-94-55/activities" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">知乎</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.zhihu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+    
+        <div class="column-right-shadow  ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/16/笔记-STM32串口USART.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="[笔记]STM32串口USART.md">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-16T15:32:35.000Z">2020-02-16</time></div>
+                    <a href="/2020/02/16/笔记-STM32串口USART.html" class="has-link-black-ter is-size-6">[笔记]STM32串口USART.md</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/硬件奇谈/">硬件奇谈</a> / <a class="has-link-grey -link" href="/categories/硬件奇谈/STM32/">STM32</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/28/Linux只应该活在服务器里？.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/landscape-1802337__340.webp" alt="Linux只应该活在服务器里？">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-28T09:39:02.000Z">2019-11-28</time></div>
+                    <a href="/2019/11/28/Linux只应该活在服务器里？.html" class="has-link-black-ter is-size-6">Linux只应该活在服务器里？</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/随笔/">随笔</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/win神器Listary调用GoldenDict查词.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/street_building_pedestrian_daytime_walk-279.jpg" alt="win神器Listary调用GoldenDict查词">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T12:12:20.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/win神器Listary调用GoldenDict查词.html" class="has-link-black-ter is-size-6">win神器Listary调用GoldenDict查词</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/软件/">软件</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/06/My-first-cloud-server.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/pic1.jpg" alt="My first cloud server">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-06T11:08:08.000Z">2019-11-06</time></div>
+                    <a href="/2019/11/06/My-first-cloud-server.html" class="has-link-black-ter is-size-6">My first cloud server</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/云服务器/">云服务器</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/30/manjaro配置.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/a754963a7584eddb278cb7fd71d3-1431091.jpg!s" alt="manjaro配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-30T05:33:40.000Z">2019-10-30</time></div>
+                    <a href="/2019/10/30/manjaro配置.html" class="has-link-black-ter is-size-6">manjaro配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/linux/">linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/My-college/">
+            <span class="level-start">
+                <span class="level-item">My college</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/云服务器/">
+            <span class="level-start">
+                <span class="level-item">云服务器</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/工具教程/">
+            <span class="level-start">
+                <span class="level-item">工具教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/工具教程/github/">
+            <span class="level-start">
+                <span class="level-item">github</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/工具教程/主题工具/">
+            <span class="level-start">
+                <span class="level-item">主题工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/思考/">
+            <span class="level-start">
+                <span class="level-item">思考</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/电影/">
+            <span class="level-start">
+                <span class="level-item">电影</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/硬件奇谈/">
+            <span class="level-start">
+                <span class="level-item">硬件奇谈</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/硬件奇谈/STM32/">
+            <span class="level-start">
+                <span class="level-item">STM32</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/考研/">
+            <span class="level-start">
+                <span class="level-item">考研</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/计算机网络/">
+            <span class="level-start">
+                <span class="level-item">计算机网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/软件/">
+            <span class="level-start">
+                <span class="level-item">软件</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/随笔/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/集成电路/">
+            <span class="level-start">
+                <span class="level-item">集成电路</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NC/">
+                        <span class="tag">NC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/github/">
+                        <span class="tag">github</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo主题/">
+                        <span class="tag">hexo主题</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/kali-linux/">
+                        <span class="tag">kali linux</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/manjaro/">
+                        <span class="tag">manjaro</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/stm32/">
+                        <span class="tag">stm32</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/win软件/">
+                        <span class="tag">win软件</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/云服务器/">
+                        <span class="tag">云服务器</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/思考/">
+                        <span class="tag">思考</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/笔记/">
+                        <span class="tag">笔记</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/考研/">
+                        <span class="tag">考研</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/课程设计/">
+                        <span class="tag">课程设计</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/软件/">
+                        <span class="tag">软件</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/随笔/">
+                        <span class="tag">随笔</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/集成电路/">
+                        <span class="tag">集成电路</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/NC/" style="font-size: 10px;">NC</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/hexo主题/" style="font-size: 12.5px;">hexo主题</a> <a href="/tags/kali-linux/" style="font-size: 12.5px;">kali linux</a> <a href="/tags/linux/" style="font-size: 17.5px;">linux</a> <a href="/tags/manjaro/" style="font-size: 10px;">manjaro</a> <a href="/tags/stm32/" style="font-size: 10px;">stm32</a> <a href="/tags/win软件/" style="font-size: 10px;">win软件</a> <a href="/tags/云服务器/" style="font-size: 10px;">云服务器</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/考研/" style="font-size: 10px;">考研</a> <a href="/tags/课程设计/" style="font-size: 10px;">课程设计</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/集成电路/" style="font-size: 12.5px;">集成电路</a>
+    </div>
+</div>
+
+        
+            
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            item
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                    <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019.10.30：添加Todo板块、删除板娘</span>
+                    </span>
+            </li>
+        
+            <li>
+                    <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019.10.05：添加valine评论</span>
+                    </span>
+            </li>
+        
+            <li>
+                    <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019.10.04：采用Icarus主题</span>
+                    </span>
+            </li>
+        
+            <li>
+                    <span class="level-left">
+                        <span class="level-item" style="justify-content:left;margin-left:4px;">2019-05-27：建站&amp;采用yilia主题</span>
+                    </span>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+        
+        </div>
+    
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/tubiao.jpg" alt="linux学习Day_2" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 huangzhentao
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/hztjiayou">hzt</a>&nbsp;
+                
+                <br>
+                &copy; 版权说明：[本网站所有内容均收集于互联网或自己创作,<br>&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="https://huangzhentao.top/message/" target="_blank">留言</a>，立即处理]
+                <br>
+                <span id="busuanzi_container_site_uv">
+                      ❤️感谢 <span id="busuanzi_value_site_uv"></span> 小伙伴的 
+                </span>
+                 <span id="busuanzi_value_site_pv"></span> 次光临 ❤️
+                 
+                </p>
+            </div>
+
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://github.com/hztjiayou ">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://github.com/hztjiayou ">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hztjiayou">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+
+                
+                </div>
+            
+            </div>
+            </div>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277650037'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277650037%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+        </div>
+    </div>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" defer src="/js/global-hot-data.js"></script>
+
+</body>
+</html>
