@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[[笔记]hexo部署到个人服务器]]></title>
     <url>%2F2020%2F02%2F18%2F%E7%AC%94%E8%AE%B0-hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E4%B8%AA%E4%BA%BA%E6%9C%8D%E5%8A%A1%E5%99%A8.html</url>
-    <content type="text"><![CDATA[写在前面 本片文章记录把HEXO博客部署到华为云服务器，几个月前购入了一台云服务器ESC，充满了好奇，一股脑的投入到了服务器的世界，这段时间部署了第一个wordpress博客，搭建个人网盘、图床，后续转到Typecho博客，但是配置的博客时钟没有满足自己的要求，比如wordpress本身不能很好的支持markdown，这不能接受，故后面转到了Typecho，但是种种原因都没有很好的体验，相比起来还是喜欢hexo+icaus这个主题的配置，故而想着把HEXO博客部署到服务器上，一来因为github上的仓库是开放的，文章多了安全，二来追求更高的访问速度。 主要步骤是在服务器上构建一个git仓库，并且使用Nginx指向hexo文件目录，再使用宝塔面板创建一个网站，把文件地址选择为上面的nginx指向的文件目录即可。再本地通过 git bash使用命令部署到服务器，部署需要输入用户密码。 通过使用 宝塔面板帮助，已经能够顺利的部署网站。只需要在 网站选项创建一个新的网站，把文件存放地址选择前端代码所在的文件夹 错误原来的hexo博客评论系统使用的是 valine,再部署到服务器之后在评论框下出现了以下错误 Code 403:访问被api域名白名单拒绝，请检查你的安全域名设置。 查阅资料后，发现解决办法，需要在lencloud网站的安全中心中添加当前博客的域名或者IP地址。 使用体验执行 hexo d命令明显加快。网页打开没有以前的延迟。 附加一句：不想开新文章写了，这两天花费一个下午和一个上午折腾了下黑苹果，感想就是：安装简单，驱动折腾死人，弃坑，再也不折腾了，或许可以考虑去淘宝交点智商税…….]]></content>
+    <content type="text"><![CDATA[写在前面 本片文章记录把HEXO博客部署到华为云服务器，几个月前购入了一台云服务器ESC，充满了好奇，一股脑的投入到了服务器的世界，这段时间部署了第一个wordpress博客，搭建个人网盘、图床，后续转到Typecho博客，但是配置的博客时钟没有满足自己的要求，比如wordpress本身不能很好的支持markdown，这不能接受，故后面转到了Typecho，但是种种原因都没有很好的体验，相比起来还是喜欢hexo+icaus这个主题的配置，故而想着把HEXO博客部署到服务器上，一来因为github上的仓库是开放的，文章多了安全，二来追求更高的访问速度。 主要步骤是在服务器上构建一个git仓库，并且使用Nginx指向hexo文件目录，再使用宝塔面板创建一个网站，把文件地址选择为上面的nginx指向的文件目录即可。再本地通过 git bash使用命令部署到服务器，部署需要输入用户密码。 通过使用 宝塔面板帮助，已经能够顺利的部署网站。只需要在 网站选项创建一个新的网站，把文件存放地址选择前端代码所在的文件夹 错误原来的hexo博客评论系统使用的是 valine,再部署到服务器之后在评论框下出现了以下错误 Code 403:访问被api域名白名单拒绝，请检查你的安全域名设置。 查阅资料后，发现解决办法，需要在lencloud网站的安全中心中添加当前博客的域名或者IP地址。 使用体验执行 hexo d命令明显加快。以前部署在Github page上因为国内网络环境的原因，打开速度很慢，现在打开网页明显比以前快。 附加一句：不想开新文章写了，这两天花费一个下午和一个上午折腾了下黑苹果，感想就是：安装简单，驱动折腾死人，弃坑，再也不折腾了，或许可以考虑去淘宝交点智商税…….]]></content>
       <categories>
         <category>工具教程</category>
         <category>博客</category>
@@ -22,6 +22,31 @@
       </categories>
       <tags>
         <tag>stm32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[笔记]vmware安装manjaro kde分辨率调整问题]]></title>
+    <url>%2F2020%2F02%2F14%2Fvmware%E5%AE%89%E8%A3%85manjaro-kde%E5%88%86%E8%BE%A8%E7%8E%87%E8%B0%83%E6%95%B4%E9%97%AE%E9%A2%98.html</url>
+    <content type="text"><![CDATA[写在前面 使用vmware workstation安装manjaro kde每次都出现无法调整分辨率问题，通过此方法可以解决这个问题。 问题描述：使用vmware安装manjaro KDE之后无法调整分辨率，在系统设置中更换分辨率，之后又自动跳转回800x600的分辨率。 解决方法：Step1. 安装open-vm-tools sudo pacman -Sy open-vm-tools sudo pacman -Sy gtkmm sudo pacman -Sy gtkmm3 重启 Step2. 设置open-vm-tools为自启动，开机后不是全屏，尝试该命令：systemctl restart vmtoolsd.service并且设置为自启动:systemctl enable vmtoolsd.service但是此处有一个Bug,设置了开机自启动也没用，仍然需要手动启动。]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>manjaro</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[笔记]Cjson在STM32中的使用]]></title>
+    <url>%2F2020%2F02%2F07%2FCjson%E5%9C%A8STM32%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8.html</url>
+    <content type="text"><![CDATA[写在前面 目前对于ESP8266的了解还远远不够，只了解esp8266这款芯片是自带 mcu的，网上搜索的关于ESP8266的教程都是基于ESP8266开发板展开的，所以开始对于如何使用这个模块很是懵逼，通过查找资料，对其有一定的了解，并且了解到在和stm32一起使用的时候需要使用AT相关的指令，目前对于这一块还不是很了解，但通过开发板的例程还是可以分析一点门路的。 今天在一个博客上看到一篇关于 使用stm32+esp8266做实时天气预报的帖子，通过esp8266链接“丫丫天气”的服务器API接口，通过 GET请求数据。这里有一个关键点，也一直是困扰我的，就是通过服务器请求回来的数据是json格式的，所以如何从一堆的数据中提取出关键的数据呢？这篇文章给出他的解决方案，就是 cjson。 原博客的地址是： STM32+ESP8266获取天气信息并显示到lcd 作者关于处理json数据的原话是：从获取到的信息可以看到，数据是json格式，而且没有gbk编码，要正常显示到LCD的话，要用cjson把我们需要的字段取出，并转换成gbk。 关于后面的 gbk编码我还没了解，我先去了解了下什么是cjson？ JSON全称为Javascript Object Notation,是一种轻量级的数据交换格式，越来越多的嵌入式设备需要联网进行数据交互，而json就是其中一个比较流行的数据交换格式，具有多种语言版本，在stm32使用中使用的是C语言版本。 json的使用，这里通过一个网上简单的例子说明。 创建一个JSON对象，并加入数据。 JSON对象转换为字符串。 将字符串解析为JSON对象，并从中提取数据。 Step1 .创建JSON对象，并向其中加入数据 12345678//创建JSON对象cJSON *info;info=cJSON_CreateObject();//添加数据cJSON_AddStringToObject(info,"sex","male");cJSON_AddNumberToObject(info,"age","20");cJSON_AddStringToObject(info,"name","weijun"); Step2 .将JSON对象转换为字符串 1234//字符指针char *jsonStr;//转换函数jsonStr=cJSON_Print(info); Step3 .将字符串转换为JSON并提取数据 1234567891011121314151617181920212223//创建JSON对象cJSON *root;cJSON *name;char *exeStr;//将json数据解析成json结构体root=cJSON_Parse(jsonStr);if(!root)&#123; print("get root failed!\n"); printf("Error before: [%s]\n", cJSON_GetErrorPtr());&#125;//获取数据name = cJSON_GetObjectItem(root, "name");if (!name) &#123; printf("get name faild !\n"); printf("Error before: [%s]\n", cJSON_GetErrorPtr());&#125;//转移数据到指针exeStr = (char*)malloc(strlen(name-&gt;valuestring));sprintf(exeStr,"%s",name-valuestring);//内存回收cJSON_Delete(root); 或者另外一个例子用来表示json的使用。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061char* pszJsonText = "&#123;\"result\":&#123;\"id\":1,\"name\":\"aa\",\"datetime\":\"2016-04-25 16:38:54\",\"status\":1&#125;, \ \"code\":10000,\"message\":\"ok\",\"sign\":901498365&#125;";typedef struct&#123; u32 cID; char *pName; char *datetime; u8 cStatus;&#125;SCAN_CODE_LIST_MEM_TypeDef;SCAN_CODE_LIST_MEM_TypeDef g_stScanCodeListMem;u8 ParseScanCodeJson(const char* pszJsonText)&#123; cJSON *root, *result; u32 code=0; u8 ret = FALSE; //将json数据解析成json结构体 root= cJSON_Parse(pszJsonText); if (root) &#123; //从根节点获取code元素的值 int型 code = cJSON_GetObjectItem(root, "code")-&gt;valueint; if(code != 10001) &#123; //从根节点获取result节点 result = cJSON_GetObjectItem(root, "result"); if (result) &#123; //从result节点获取各个元素的值 g_stScanCodeListMem.cID = cJSON_GetObjectItem(result, "id")-&gt;valueint; //int 型 g_stScanCodeListMem.pName = cJSON_GetObjectItem(result, "name")-&gt;valuestring;//字符串型 g_stScanCodeListMem.datetime = cJSON_GetObjectItem(result, "datetime")-&gt;valuestring;//字符串型 g_stScanCodeListMem.cStatus = cJSON_GetObjectItem(result, "status")-&gt;valueint;//int 型 //保存扫描用户的名字 把id值也作为一个参数存入 WriteScanCodeName(g_stScanCodeListMem.pName, g_stScanCodeListMem.cID); #ifdef DEBUG_APP_TASK printf("\r\n"); printf(" cID:%d ", g_stScanCodeListMem.cID); printf(" pName:%s", g_stScanCodeListMem.pName); printf(" datetime:%s ", g_stScanCodeListMem.datetime); printf(" cStatus:%d ", g_stScanCodeListMem.cStatus); printf("\r\n"); #endif ret = TRUE; &#125; &#125; //释放资源 cJSON_Delete(root); &#125; return ret;&#125; 亦或者另一个实例，stm32使用cJSON库提取解析json数据例程 12345678910111213141516171819202122void testJson()&#123; char *out;cJSON *json,*jsonTemp; json=cJSON_Parse((char *)USART1_RX_BUF); if (!json) &#123;printf("Error before: [%s]\n",cJSON_GetErrorPtr());&#125; else &#123; out=cJSON_Print(json); printf("%s:%x:%x\n",out,json,out); jsonTemp=cJSON_GetObjectItem(json,"name"); printf("name:%s\n",jsonTemp-&gt;valuestring); jsonTemp=cJSON_GetArrayItem(json,1); printf("phone:%d\n",jsonTemp-&gt;valueint); jsonTemp=cJSON_GetArrayItem(json,2); jsonTemp=cJSON_GetArrayItem(jsonTemp,0); printf("params-area:%s\n",jsonTemp-&gt;valuestring); cJSON_Delete(json); myfree(SRAMEX,out); &#125;&#125;]]></content>
+      <categories>
+        <category>硬件奇谈</category>
+        <category>STM32</category>
+      </categories>
+      <tags>
+        <tag>stm32</tag>
+        <tag>cjson</tag>
       </tags>
   </entry>
   <entry>

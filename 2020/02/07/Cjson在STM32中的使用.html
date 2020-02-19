@@ -2,13 +2,13 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>[笔记]STM32串口USART.md - Monkey&amp;umpkin</title>
+<title> [笔记]Cjson在STM32中的使用 - Monkey&amp;umpkin</title>
 <meta charset="utf-8" />
 
 <meta name="generator" content="Hexo 3.9.0" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>[笔记]STM32串口USART.md - Monkey&amp;umpkin</title>
+<title> [笔记]Cjson在STM32中的使用 - Monkey&amp;umpkin</title>
 
 <meta name="google-site-verification" content="67z1CXZ8AOhImIglgTwqAlneRCHTO6xRJo5NeafDAqw" />
 <script>
@@ -26,25 +26,24 @@
 })();
 </script>
 
-    <meta name="description" content="写在前面 记录STM32串口USART的学习笔记，包括 理论部分和 实操代码部分，理论部分讲解USART工作原理，涉及寄存器的控制，代码部分完全由库函数编写完成。">
+    <meta name="description" content="写在前面 目前对于ESP8266的了解还远远不够，只了解esp8266这款芯片是自带 mcu的，网上搜索的关于ESP8266的教程都是基于ESP8266开发板展开的，所以开始对于如何使用这个模块很是懵逼，通过查找资料，对其有一定的了解，并且了解到在和stm32一起使用的时候需要使用AT相关的指令，目前对于这一块还不是很了解，但通过开发板的例程还是可以分析一点门路的。">
 <meta name="keywords" content="categories-java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[笔记]STM32串口USART.md">
-<meta property="og:url" content="https://hztjiayou.github.io/2020/02/16/笔记-STM32串口USART.html">
+<meta property="og:title" content=" [笔记]Cjson在STM32中的使用">
+<meta property="og:url" content="https://hztjiayou.github.io/2020/02/07/Cjson在STM32中的使用.html">
 <meta property="og:site_name" content="Monkey&amp;umpkin">
-<meta property="og:description" content="写在前面 记录STM32串口USART的学习笔记，包括 理论部分和 实操代码部分，理论部分讲解USART工作原理，涉及寄存器的控制，代码部分完全由库函数编写完成。">
+<meta property="og:description" content="写在前面 目前对于ESP8266的了解还远远不够，只了解esp8266这款芯片是自带 mcu的，网上搜索的关于ESP8266的教程都是基于ESP8266开发板展开的，所以开始对于如何使用这个模块很是懵逼，通过查找资料，对其有一定的了解，并且了解到在和stm32一起使用的时候需要使用AT相关的指令，目前对于这一块还不是很了解，但通过开发板的例程还是可以分析一点门路的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://img.hztjiayou.top/images/2020/02/16/usart.png">
-<meta property="og:image" content="http://img.hztjiayou.top/images/2020/02/16/shujuzhen.png">
-<meta property="og:updated_time" content="2020-02-19T10:00:18.602Z">
+<meta property="og:image" content="http://img.hztjiayou.top/images/2020/02/07/20190516183139772.png">
+<meta property="og:updated_time" content="2020-02-19T13:52:47.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[笔记]STM32串口USART.md">
-<meta name="twitter:description" content="写在前面 记录STM32串口USART的学习笔记，包括 理论部分和 实操代码部分，理论部分讲解USART工作原理，涉及寄存器的控制，代码部分完全由库函数编写完成。">
-<meta name="twitter:image" content="http://img.hztjiayou.top/images/2020/02/16/usart.png">
+<meta name="twitter:title" content=" [笔记]Cjson在STM32中的使用">
+<meta name="twitter:description" content="写在前面 目前对于ESP8266的了解还远远不够，只了解esp8266这款芯片是自带 mcu的，网上搜索的关于ESP8266的教程都是基于ESP8266开发板展开的，所以开始对于如何使用这个模块很是懵逼，通过查找资料，对其有一定的了解，并且了解到在和stm32一起使用的时候需要使用AT相关的指令，目前对于这一块还不是很了解，但通过开发板的例程还是可以分析一点门路的。">
+<meta name="twitter:image" content="http://img.hztjiayou.top/images/2020/02/07/20190516183139772.png">
 
 
 
-<link rel="alternative" href="/atom.xml" title="[笔记]STM32串口USART.md" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title=" [笔记]Cjson在STM32中的使用" type="application/atom+xml">
 
 
 
@@ -120,7 +119,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="[笔记]STM32串口USART.md" height="28">
+                <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt=" [笔记]Cjson在STM32中的使用" height="28">
             
             </a>
         </div>
@@ -196,7 +195,7 @@
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 
-                <time class="level-item has-text-grey" datetime="2020-02-16T15:32:35.000Z">2020-02-16</time>
+                <time class="level-item has-text-grey" datetime="2020-02-07T13:45:11.000Z">2020-02-07</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/硬件奇谈/">硬件奇谈</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/硬件奇谈/STM32/">STM32</a>
@@ -206,7 +205,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1807 个字)
+                    7 分钟 读完 (大约 1101 个字)
                 </span>
                 
                 
@@ -220,95 +219,44 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                [笔记]STM32串口USART.md
+                 [笔记]Cjson在STM32中的使用
             
         </h1>
         <div class="content">
             <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><blockquote>
-<p>记录STM32串口USART的学习笔记，包括 <strong>理论部分</strong>和 <strong>实操代码</strong>部分，理论部分讲解USART工作原理，涉及寄存器的控制，代码部分完全由库函数编写完成。<br><a id="more"></a></p>
+<p>目前对于ESP8266的了解还远远不够，只了解esp8266这款芯片是自带 <strong>mcu</strong>的，网上搜索的关于ESP8266的教程都是基于ESP8266开发板展开的，所以开始对于如何使用这个模块很是懵逼，通过查找资料，对其有一定的了解，并且了解到在和stm32一起使用的时候需要使用AT相关的指令，目前对于这一块还不是很了解，但通过开发板的例程还是可以分析一点门路的。</p>
+<a id="more"></a>
 </blockquote>
-<h2 id="一-工作原理"><a href="#一-工作原理" class="headerlink" title="一.工作原理"></a>一.工作原理</h2><h3 id="1-USART功能框图"><a href="#1-USART功能框图" class="headerlink" title="1.USART功能框图"></a>1.USART功能框图</h3><p>关于USART，首先要了解有关串口的基本知识，比如：同步、异步，单工、双工、半双工，串行、并行等基本概念，在51单片机中也有串口，叫做UART，和stm32单片机的串口相比少了一个S，stm32单片机的串口USART，中的S代表着同步的意思，表示其能使用同步通讯方式，使用异步通信方式的串口只需要TX和RX两根数据线即可，而同步通信方式还需要一根时钟线。stm32f10x系列芯片中包含5个串口，三个USART和两个UART，而USART1的时钟来源是APB2总线，时钟频率能达到72Mhz，其他串口最大时钟频率为32Mhz，这篇笔记以USART1为例。</p>
-<p>首先要讲解的是USART的功能框图，图片来源野火开发板资料，如下：<br><img src="http://img.hztjiayou.top/images/2020/02/16/usart.png" alt="USART功能框图"></p>
-<h4 id="1-1-引脚"><a href="#1-1-引脚" class="headerlink" title="1.1 引脚"></a>1.1 引脚</h4><p>关于引脚在此关注一下：TX、RX、nRTS、nCTS、SCLK。<br><strong>TX &amp; RX</strong>:发送引脚 和 接收引脚<br>两个硬件流控制引脚：<br><strong>nRTS</strong>：请求以发送引脚，n表示低电平有效，USART准备接收新数据时候，nRTS变为低电平，接收完成变为高电平。<br><strong>nCTS</strong>:清除一发送引脚，n表示低电平有效，发送器在发送下一帧数据时候检测nCTS,如果为低电平，则可以发送数据，否则在发送完前一帧数据后停止发送。<br><strong>SCLK</strong>：发送器时钟输出引脚，<em>仅用于同步模式</em>。</p>
-<h4 id="1-2-数据寄存器USART-DR"><a href="#1-2-数据寄存器USART-DR" class="headerlink" title="1.2 数据寄存器USART_DR"></a>1.2 数据寄存器USART_DR</h4><p>USART外设包含这几个主要寄存器：</p>
+<p>今天在一个博客上看到一篇关于 使用<strong>stm32+esp8266</strong>做实时天气预报的帖子，通过esp8266链接“丫丫天气”的服务器API接口，通过 <strong>GET</strong>请求数据。这里有一个关键点，也一直是困扰我的，就是通过服务器请求回来的数据是json格式的，所以如何从一堆的数据中提取出关键的数据呢？这篇文章给出他的解决方案，就是 <strong>cjson</strong>。</p>
+<p>原博客的地址是：<a href="http://bbs.elecfans.com/forum.php?mod=viewthread&amp;tid=1677425&amp;page=1#pid7189332" target="_blank" rel="noopener"> STM32+ESP8266获取天气信息并显示到lcd</a></p>
+<p>作者关于处理json数据的原话是：<strong>从获取到的信息可以看到，数据是json格式，而且没有gbk编码，要正常显示到LCD的话，要用cjson把我们需要的字段取出，并转换成gbk。</strong></p>
+<p>关于后面的 <strong>gbk</strong>编码我还没了解，我先去了解了下什么是cjson？</p>
+<p>JSON全称为Javascript Object Notation,是一种轻量级的数据交换格式，越来越多的嵌入式设备需要联网进行数据交互，而json就是其中一个比较流行的数据交换格式，具有多种语言版本，在stm32使用中使用的是C语言版本。</p>
+<p>json的使用，这里通过一个网上简单的例子说明。</p>
 <ul>
-<li>USART_DR：数据寄存器</li>
-<li>USART_SR：状态寄存器</li>
-<li>USART_BRR：波特率寄存器</li>
-<li>USART_CR1：控制寄存器1</li>
+<li>创建一个JSON对象，并加入数据。</li>
+<li>JSON对象转换为字符串。</li>
+<li>将字符串解析为JSON对象，并从中提取数据。</li>
 </ul>
-<p>其中上图中的2表示的是数据寄存器USART_DR,USART_DR只有9位有效，并且第九位是否有效取决于USART控制器寄存器USART_CR1的M位设置，M=0,则为8位数据字长，M=1，则为9位数据字长，一般使用8位数据字长。<br>USART_DR包含两个寄存器 <strong>TDR</strong>和 <strong>RDR</strong>，前者是专门用于 <strong>发送</strong> 的 <strong>可写</strong>寄存器，后者是专门用于 <strong>接收</strong> 的 <strong>可读</strong> 寄存器。<br>串口通信是一个位一个位的传输，发送数据时候总线把数据为TDR寄存器，TDR寄存器数据转移到<strong>发送移位寄存器</strong>，然后把数据发送出去，接收数据时候把接收到的数据一位一位顺序保存到<strong>接收移位寄存器</strong>，再转移到RDR寄存器，再传给总线，配合上图2部分理解。</p>
-<h4 id="1-3-控制器"><a href="#1-3-控制器" class="headerlink" title="1.3 控制器"></a>1.3 控制器</h4><p>USART有专门控制发送的发送器和专门控制接收的接收器，还有唤醒单元，中断控制等，控制器分为<strong>发送器控制</strong>和<strong>接收器控制</strong>，使用USART之前向USART_CR1寄存器的UE位置1，使能USART.</p>
-<h5 id="1-3-1-发送器控制及字符帧组成"><a href="#1-3-1-发送器控制及字符帧组成" class="headerlink" title="1.3.1 发送器控制及字符帧组成"></a>1.3.1 发送器控制及字符帧组成</h5><p><strong>将USART_CR1寄存器发送使能位 TE 置1，启动数据发送</strong>，发送移位寄存器在TX引脚输出，低位在前，高位在后。发送的数据为字符帧，一个字符帧由三个部分组成，<strong>起始位</strong>、<strong>数据帧</strong>、<strong>停止位</strong>。<br><strong>起始位</strong>是一个位周期的低电平，位周期是每一位数据占用的时间。<br><strong>数据帧</strong>表示要发送的数据，8位或者9位，从低位开始传输。<br><strong>停止位</strong>是一定时间周期的高电平，这个一定时间可以是0.5、1、1.5、2个周期，默认使用一个周期的停止位。通过USART_CR2的stop[1:0]控制。<br><img src="http://img.hztjiayou.top/images/2020/02/16/shujuzhen.png" alt="发送时序图"><br><strong>发送数据的流程</strong>：发送使能位TE置1，发送器先发送一个空闲帧（一个数据帧长度的高电平），接着往USART_DR寄存器的 发送数据寄存器TDR写入数据，发送寄存器 把数据全部转到 移位寄存器 后，UDART_SR的TXE位置1，表示 发送寄存器 为空，发送移位寄存器 发送最后一个数据之后，USART_SR的TC位置1，表示数据传输完成。如果USART_CR1寄存器的TCIE位置1，可产生中断。</p>
-<h5 id="1-3-2-接收器控制"><a href="#1-3-2-接收器控制" class="headerlink" title="1.3.2 接收器控制"></a>1.3.2 接收器控制</h5><p><strong>接收数据流程</strong>：USART_CR1寄存器的RE置1，使能USART接收，接收器在RX线上开始搜索起始位，确定起始位之后，根据RX电平状态，把数据放在 接收移位寄存器 中，接收完成<strong>后</strong>，把数据移到 接收数据寄存器RDR 内，并把USART_SR寄存器的RXNE位置1。如果USART_CR1的RXNEIE置1，可产生中断。</p>
-<h4 id="1-4-波特率"><a href="#1-4-波特率" class="headerlink" title="1.4 波特率"></a>1.4 波特率</h4><p>波特率表示数据传输的速率，波特率越大，速率越快，USART发送器和接收器使用相同的波特率，波特率计算公式如下：<br><strong>波特率=$$\frac{f_{ck}}{16*USARTDIV}$$</strong><br><strong>$$f_{ck}$$</strong>表示时钟频率。<br><strong>USARTDIV</strong>是一个存放在波特率寄存器USART_BRR中的无符号定点数。DIV_Mantissa[15:4]定义整数部分，DIV_Fraction[3:0]表示小数部分。</p>
-<p><strong>例1</strong>DIV_Mantissa=24（0x18）,DIV_Fraction=10(0x0A),则USART_BRR的值为0x18A。那么USARTDIV的小数部分为 10/16=0.625，则USARTDIV等于24.625。<br><strong>例2</strong>以USART1为例子，为了得到115200的波特率，则USARTDIV该取多少？<br>由波特率公式一个算的UDARTDIV等于39.0625，可以知道DIV_Fraction=16 * 0.0625=1=0x01(取最近似值)，DIV_Mantissa=39=0x27,故USART_BRR等于0x271。</p>
-<h4 id="1-5-校验控制"><a href="#1-5-校验控制" class="headerlink" title="1.5 校验控制"></a>1.5 校验控制</h4><p>使用奇偶校验则串口传输长度是8位数据帧加上1位校验位共9位，此时USART_CR1的M位置1,。USART_CR1寄存器的PCE位置1，可以启动奇偶位校验控制位。<br>奇偶校验由硬件自动完成，发送数据帧自动加校验位，接收时自动验证。此时的一个字符帧为：<br>起始位+数据帧+校验位+停止位</p>
-<h4 id="1-6-中断控制"><a href="#1-6-中断控制" class="headerlink" title="1.6 中断控制"></a>1.6 中断控制</h4><p>USART有多个中断请求事件，如下表格</p>
-<table>
-<thead>
-<tr>
-<th>中断事件</th>
-<th>事件标志</th>
-<th>使能控制位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发送数据寄存器位空</td>
-<td>TXE</td>
-<td>TXEIE</td>
-</tr>
-<tr>
-<td>CTS标志</td>
-<td>CTS</td>
-<td>CTSIE</td>
-</tr>
-<tr>
-<td>发送完成</td>
-<td>TC</td>
-<td>TCIE</td>
-</tr>
-<tr>
-<td>准备好读取接收到的数据</td>
-<td>RXNE</td>
-<td>RXNEIE</td>
-</tr>
-<tr>
-<td>检测到上溢错误</td>
-<td>ORE</td>
-<td>RXNEIE</td>
-</tr>
-<tr>
-<td>检测到空闲线路</td>
-<td>IDLE</td>
-<td>IDLEIE</td>
-</tr>
-<tr>
-<td>奇偶校验错误</td>
-<td>PE</td>
-<td>PEIE</td>
-</tr>
-<tr>
-<td>断路标志</td>
-<td>LBD</td>
-<td>LBDIE</td>
-</tr>
-<tr>
-<td>多缓冲通信中噪声、上溢、帧错误</td>
-<td>NF/ORE/FE</td>
-<td>EIE</td>
-</tr>
-</tbody>
-</table>
-<h2 id="二-代码"><a href="#二-代码" class="headerlink" title="二.代码"></a>二.代码</h2>
+<p><strong>Step1</strong> .创建JSON对象，并向其中加入数据</p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//创建JSON对象</span></span><br><span class="line">cJSON *info;</span><br><span class="line">info=cJSON_CreateObject();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//添加数据</span></span><br><span class="line">cJSON_AddStringToObject(info,<span class="hljs-string">"sex"</span>,<span class="hljs-string">"male"</span>);</span><br><span class="line">cJSON_AddNumberToObject(info,<span class="hljs-string">"age"</span>,<span class="hljs-string">"20"</span>);</span><br><span class="line">cJSON_AddStringToObject(info,<span class="hljs-string">"name"</span>,<span class="hljs-string">"weijun"</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>Step2</strong> .将JSON对象转换为字符串</p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//字符指针</span></span><br><span class="line"><span class="hljs-keyword">char</span> *jsonStr;</span><br><span class="line"><span class="hljs-comment">//转换函数</span></span><br><span class="line">jsonStr=cJSON_Print(info);</span><br></pre></td></tr></table></figure>
+<p><strong>Step3</strong> .将字符串转换为JSON并提取数据</p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//创建JSON对象</span></span><br><span class="line">cJSON *root;</span><br><span class="line">cJSON *name;</span><br><span class="line"><span class="hljs-keyword">char</span> *exeStr;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//将json数据解析成json结构体</span></span><br><span class="line">root=cJSON_Parse(jsonStr);</span><br><span class="line"><span class="hljs-keyword">if</span>(!root)&#123;</span><br><span class="line">    print(<span class="hljs-string">"get root failed!\n"</span>);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Error before: [%s]\n"</span>, cJSON_GetErrorPtr());</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//获取数据</span></span><br><span class="line">name = cJSON_GetObjectItem(root, <span class="hljs-string">"name"</span>);</span><br><span class="line"><span class="hljs-keyword">if</span> (!name) &#123;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"get name faild !\n"</span>);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Error before: [%s]\n"</span>, cJSON_GetErrorPtr());</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//转移数据到指针</span></span><br><span class="line">exeStr = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">strlen</span>(name-&gt;valuestring));</span><br><span class="line"><span class="hljs-built_in">sprintf</span>(exeStr,<span class="hljs-string">"%s"</span>,name-valuestring);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//内存回收</span></span><br><span class="line">cJSON_Delete(root);</span><br></pre></td></tr></table></figure>
+<p>或者另外一个例子用来表示json的使用。</p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">char</span>* pszJsonText = <span class="hljs-string">"&#123;\"result\":&#123;\"id\":1,\"name\":\"aa\",\"datetime\":\"2016-04-25 16:38:54\",\"status\":1&#125;, \</span></span><br><span class="line"><span class="hljs-string">        \"code\":10000,\"message\":\"ok\",\"sign\":901498365&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    u32 cID;</span><br><span class="line">    <span class="hljs-keyword">char</span> *pName;</span><br><span class="line">        <span class="hljs-keyword">char</span> *datetime;</span><br><span class="line">        u8 cStatus;</span><br><span class="line">&#125;SCAN_CODE_LIST_MEM_TypeDef;</span><br><span class="line"></span><br><span class="line">SCAN_CODE_LIST_MEM_TypeDef g_stScanCodeListMem;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">u8 <span class="hljs-title">ParseScanCodeJson</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* pszJsonText)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    cJSON   *root, *result;</span><br><span class="line">    u32 code=<span class="hljs-number">0</span>;</span><br><span class="line">        u8 ret = FALSE;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//将json数据解析成json结构体</span></span><br><span class="line">    root= cJSON_Parse(pszJsonText);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (root)</span><br><span class="line">    &#123; </span><br><span class="line">            <span class="hljs-comment">//从根节点获取code元素的值 int型</span></span><br><span class="line">                code = cJSON_GetObjectItem(root, <span class="hljs-string">"code"</span>)-&gt;valueint;</span><br><span class="line"></span><br><span class="line">                <span class="hljs-keyword">if</span>(code != <span class="hljs-number">10001</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        <span class="hljs-comment">//从根节点获取result节点</span></span><br><span class="line">                        result = cJSON_GetObjectItem(root, <span class="hljs-string">"result"</span>);</span><br><span class="line"></span><br><span class="line">                        <span class="hljs-keyword">if</span> (result)</span><br><span class="line">                        &#123; </span><br><span class="line">                                <span class="hljs-comment">//从result节点获取各个元素的值</span></span><br><span class="line">                                g_stScanCodeListMem.cID =  cJSON_GetObjectItem(result, <span class="hljs-string">"id"</span>)-&gt;valueint; <span class="hljs-comment">//int 型</span></span><br><span class="line">                                g_stScanCodeListMem.pName = cJSON_GetObjectItem(result, <span class="hljs-string">"name"</span>)-&gt;valuestring;<span class="hljs-comment">//字符串型</span></span><br><span class="line">                                g_stScanCodeListMem.datetime = cJSON_GetObjectItem(result, <span class="hljs-string">"datetime"</span>)-&gt;valuestring;<span class="hljs-comment">//字符串型</span></span><br><span class="line">                                g_stScanCodeListMem.cStatus = cJSON_GetObjectItem(result, <span class="hljs-string">"status"</span>)-&gt;valueint;<span class="hljs-comment">//int 型</span></span><br><span class="line"></span><br><span class="line">                            <span class="hljs-comment">//保存扫描用户的名字  把id值也作为一个参数存入</span></span><br><span class="line">                                WriteScanCodeName(g_stScanCodeListMem.pName, g_stScanCodeListMem.cID);</span><br><span class="line"></span><br><span class="line">   <span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> DEBUG_APP_TASK        </span></span><br><span class="line">                                <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\r\n"</span>);</span><br><span class="line">                                <span class="hljs-built_in">printf</span>(<span class="hljs-string">" cID:%d "</span>, g_stScanCodeListMem.cID);       </span><br><span class="line">                                <span class="hljs-built_in">printf</span>(<span class="hljs-string">" pName:%s"</span>, g_stScanCodeListMem.pName);              </span><br><span class="line">                                <span class="hljs-built_in">printf</span>(<span class="hljs-string">" datetime:%s "</span>, g_stScanCodeListMem.datetime);</span><br><span class="line">                                <span class="hljs-built_in">printf</span>(<span class="hljs-string">" cStatus:%d "</span>, g_stScanCodeListMem.cStatus);</span><br><span class="line">                                <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\r\n"</span>);</span><br><span class="line">        <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span>                  </span></span><br><span class="line">                                ret = TRUE;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//释放资源</span></span><br><span class="line">        cJSON_Delete(root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>亦或者另一个实例，<a href="https://blog.csdn.net/hxlawf/article/details/90269458" target="_blank" rel="noopener">stm32使用cJSON库提取解析json数据例程</a></p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">testJson</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">char</span> *out;cJSON *json,*jsonTemp;</span><br><span class="line"></span><br><span class="line">    json=cJSON_Parse((<span class="hljs-keyword">char</span> *)USART1_RX_BUF);</span><br><span class="line">    <span class="hljs-keyword">if</span> (!json) &#123;<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Error before: [%s]\n"</span>,cJSON_GetErrorPtr());&#125;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        out=cJSON_Print(json);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s:%x:%x\n"</span>,out,json,out);</span><br><span class="line">        jsonTemp=cJSON_GetObjectItem(json,<span class="hljs-string">"name"</span>);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"name:%s\n"</span>,jsonTemp-&gt;valuestring);</span><br><span class="line">        jsonTemp=cJSON_GetArrayItem(json,<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"phone:%d\n"</span>,jsonTemp-&gt;valueint);</span><br><span class="line">        jsonTemp=cJSON_GetArrayItem(json,<span class="hljs-number">2</span>);</span><br><span class="line">        jsonTemp=cJSON_GetArrayItem(jsonTemp,<span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"params-area:%s\n"</span>,jsonTemp-&gt;valuestring);</span><br><span class="line">        cJSON_Delete(json);</span><br><span class="line">        myfree(SRAMEX,out);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.hztjiayou.top/images/2020/02/07/20190516183139772.png" alt="img"></p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/stm32/">stm32</a>
+                    <a class="has-link-grey -link" href="/tags/cjson/">cjson</a>, <a class="has-link-grey -link" href="/tags/stm32/">stm32</a>
                 </div>
             </div>
         </div>
@@ -359,16 +307,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/18/笔记-hexo部署到个人服务器.html">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/14/vmware安装manjaro-kde分辨率调整问题.html">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">[笔记]hexo部署到个人服务器</span>
+                <span class="level-item">[笔记]vmware安装manjaro kde分辨率调整问题</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/14/vmware安装manjaro-kde分辨率调整问题.html">
-                <span class="level-item">[笔记]vmware安装manjaro kde分辨率调整问题</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/28/Linux只应该活在服务器里？.html">
+                <span class="level-item">Linux只应该活在服务器里？</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -522,46 +470,10 @@
             <h3 class="menu-label">
                 目录
             </h3>
-            <ul class="menu-list"><ul class="menu-list"><li>
+            <ul class="menu-list"><li>
         <a class="is-flex" href="#写在前面">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">1</span>
         <span>写在前面</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#一-工作原理">
-        <span class="has-mr-6">2</span>
-        <span>一.工作原理</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-USART功能框图">
-        <span class="has-mr-6">2.1</span>
-        <span>1.USART功能框图</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-1-引脚">
-        <span class="has-mr-6">2.1.1</span>
-        <span>1.1 引脚</span>
-        </a></li><li>
-        <a class="is-flex" href="#1-2-数据寄存器USART-DR">
-        <span class="has-mr-6">2.1.2</span>
-        <span>1.2 数据寄存器USART_DR</span>
-        </a></li><li>
-        <a class="is-flex" href="#1-3-控制器">
-        <span class="has-mr-6">2.1.3</span>
-        <span>1.3 控制器</span>
-        </a></li><li>
-        <a class="is-flex" href="#1-4-波特率">
-        <span class="has-mr-6">2.1.4</span>
-        <span>1.4 波特率</span>
-        </a></li><li>
-        <a class="is-flex" href="#1-5-校验控制">
-        <span class="has-mr-6">2.1.5</span>
-        <span>1.5 校验控制</span>
-        </a></li><li>
-        <a class="is-flex" href="#1-6-中断控制">
-        <span class="has-mr-6">2.1.6</span>
-        <span>1.6 中断控制</span>
-        </a></li></ul></li></ul></li><li>
-        <a class="is-flex" href="#二-代码">
-        <span class="has-mr-6">3</span>
-        <span>二.代码</span>
         </a></li></ul>
         </div>
     </div>
@@ -917,7 +829,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="[笔记]STM32串口USART.md" height="28">
+                    <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt=" [笔记]Cjson在STM32中的使用" height="28">
                 
                 </a>
                 <p class="is-size-7">
