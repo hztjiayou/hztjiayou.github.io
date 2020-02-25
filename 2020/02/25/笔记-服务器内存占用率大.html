@@ -2,13 +2,13 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>Monkey&amp;umpkin</title>
+<title>[笔记]linux服务器内存占用率大 - Monkey&amp;umpkin</title>
 <meta charset="utf-8" />
 
 <meta name="generator" content="Hexo 3.9.0" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>Monkey&amp;umpkin</title>
+<title>[笔记]linux服务器内存占用率大 - Monkey&amp;umpkin</title>
 
 <meta name="google-site-verification" content="67z1CXZ8AOhImIglgTwqAlneRCHTO6xRJo5NeafDAqw" />
 <script>
@@ -26,22 +26,22 @@
 })();
 </script>
 
-    <meta name="description" content="个人简介   很喜欢老罗的一段话：“每一个生命来到世间都注定改变世界，别无选择。要么变得好一点，要么变得坏一点。你如果走进社会为了生存为了什么不要脸的理由，变成了一个恶心的成年人社会中的一员，那你就把这个世界变得恶心了一点点。如果你一生刚正不阿，如果你一生耿直，没有做任何恶心的事情，没做对别人有害的事情，一辈子拼了老命勉强把自己身边的几个人照顾好了，没有成名没有发财，没有成就伟大的事业，然后耿着脖">
-<meta name="keywords" content="EE,嵌入式,集成电路">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Monkey&amp;umpkin">
-<meta property="og:url" content="https://hztjiayou.github.io/abouta/index.html">
+    <meta name="description" content="写在前面 查看宝塔服务器状态监视，发现内存占用比平常大，平常只有30%左右的占用率，现在有70%的占用率，觉得异常，在释放内存之后仍然占用率很大。">
+<meta name="keywords" content="categories-java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[笔记]linux服务器内存占用率大">
+<meta property="og:url" content="https://hztjiayou.github.io/2020/02/25/笔记-服务器内存占用率大.html">
 <meta property="og:site_name" content="Monkey&amp;umpkin">
-<meta property="og:description" content="个人简介   很喜欢老罗的一段话：“每一个生命来到世间都注定改变世界，别无选择。要么变得好一点，要么变得坏一点。你如果走进社会为了生存为了什么不要脸的理由，变成了一个恶心的成年人社会中的一员，那你就把这个世界变得恶心了一点点。如果你一生刚正不阿，如果你一生耿直，没有做任何恶心的事情，没做对别人有害的事情，一辈子拼了老命勉强把自己身边的几个人照顾好了，没有成名没有发财，没有成就伟大的事业，然后耿着脖">
+<meta property="og:description" content="写在前面 查看宝塔服务器状态监视，发现内存占用比平常大，平常只有30%左右的占用率，现在有70%的占用率，觉得异常，在释放内存之后仍然占用率很大。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-29T13:17:56.000Z">
+<meta property="og:updated_time" content="2020-02-25T02:33:42.530Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Monkey&amp;umpkin">
-<meta name="twitter:description" content="个人简介   很喜欢老罗的一段话：“每一个生命来到世间都注定改变世界，别无选择。要么变得好一点，要么变得坏一点。你如果走进社会为了生存为了什么不要脸的理由，变成了一个恶心的成年人社会中的一员，那你就把这个世界变得恶心了一点点。如果你一生刚正不阿，如果你一生耿直，没有做任何恶心的事情，没做对别人有害的事情，一辈子拼了老命勉强把自己身边的几个人照顾好了，没有成名没有发财，没有成就伟大的事业，然后耿着脖">
+<meta name="twitter:title" content="[笔记]linux服务器内存占用率大">
+<meta name="twitter:description" content="写在前面 查看宝塔服务器状态监视，发现内存占用比平常大，平常只有30%左右的占用率，现在有70%的占用率，觉得异常，在释放内存之后仍然占用率很大。">
 
 
 
-<link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="[笔记]linux服务器内存占用率大" type="application/atom+xml">
 
 
 
@@ -117,7 +117,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="" height="28">
+                <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="[笔记]linux服务器内存占用率大" height="28">
             
             </a>
         </div>
@@ -169,6 +169,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -184,50 +188,68 @@
             <div class="columns">
                 <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="http://wx3.sinaimg.cn/large/b5d1b710ly1g6s7hn2aycj212w0k0dx5.jpg" alt="">
-        </span>
-    </div>
-    
     <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2020-02-25T02:20:03.000Z">2020-02-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/云服务器/">云服务器</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 261 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    1<span id="busuanzi_value_page_pv"></span> 次查看
+                </span>
+                
+            </div>
+        </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                
+                [笔记]linux服务器内存占用率大
             
         </h1>
         <div class="content">
-            <p><strong>个人简介</strong></p>
-<hr>
-<blockquote>
-<p><em>很喜欢<strong><a href="https://baike.baidu.com/item/%E7%BD%97%E6%B0%B8%E6%B5%A9/26814?fr=aladdin" target="_blank" rel="noopener">老罗</a></strong>的一段话：</em><br>“<strong><em>每一个生命来到世间都注定改变世界，别无选择。要么变得好一点，要么变得坏一点。你如果走进社会为了生存为了什么不要脸的理由，变成了一个恶心的成年人社会中的一员，那你就把这个世界变得恶心了一点点。如果你一生刚正不阿，如果你一生耿直，没有做任何恶心的事情，没做对别人有害的事情，一辈子拼了老命勉强把自己身边的几个人照顾好了，没有成名没有发财，没有成就伟大的事业，然后耿着脖子一生正直，到了七八十岁耿着脖子去世了。你这一生是不是没有改变世界？你还是改变世界了，你把这个世界变得美好了一点点。因为世界上又多了一个好人。</em></strong>“<br>-&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<br><em>善恶终有报,天道好轮回。不信抬头看,苍天饶过谁。<br>无论何时何地，我们都要保持一颗积极乐观、善良感恩的心。<br>但行好事莫问前程，永远年轻，永远热内盈眶。<br>💪💪💪💪💪💪冲鸭！！！！</em><br>-&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<br>个人信息：<br>坚信代码改变世界</p>
+            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><blockquote>
+<p>查看宝塔服务器状态监视，发现内存占用比平常大，平常只有30%左右的占用率，现在有70%的占用率，觉得异常，在释放内存之后仍然占用率很大。</p>
+<a id="more"></a>
 </blockquote>
+<p>点击释放内存之后，内存占用率还是很大，于是重启了php-fpm和nginx,重启之后并没有什么变化。</p>
+<p>使用命令查看占用内存最大的10个进程：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | sort -k4nr |head -n 10</span><br></pre></td></tr></table></figure>
+<p>查看内存占用最大的进程有无异样，如有异样，可以使用以下命令杀掉进程：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">kill</span> -9 $(ps aux | grep 进程名 |grep -v grep| awk <span class="hljs-string">'&#123;print $2&#125;'</span>)</span><br></pre></td></tr></table></figure>
+<p>不要凭个人直觉杀掉进程，需要找出原因确定之后，再去执行，防止服务器出现问题。</p>
+<p>另外还有一个查看内存占用最大进程的命令</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux| grep -v <span class="hljs-string">"USER"</span> |sort -n -r -k 4 |awk <span class="hljs-string">'NR==1&#123; print $0&#125;'</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
 <hr>
-<p>本暗黑模式只更新文章，其余信息不再更新，需要完全信息请点击以下：<br><a href="https://removeif.github.io/" target="_blank" rel="noopener">切换主站</a></p>
-<p><strong><em>博客更新日志：</em></strong><br>–<em>2019.09.14：利用中秋节放假，重做了首页的热门推荐、加个widget最新评论框、归档页加入文章贡献概览面板</em><br>–<em>2019.09.14：增加<a href="https://removeif.github.io/remove.io/" target="_blank" rel="noopener">暗黑主题页面</a></em><br>–<em>2019.09.18：修改友链ui为一行三个，并适配移动端，暗黑模式文章增加评论链接，增加留言链接</em><br>–<em>2019.09.19：修改布局，拉伸布局，更宽的展示</em><br>–<em>2019.09.19：开源博客代码</em><br><br><br><strong>2019计划</strong></p>
-<hr>
-<p>2018.12.31/21:59:00</p>
-<blockquote>
-<ul>
-<li>2019-GOALS</li>
-<li style="list-style: none"><input type="checkbox"> 购买的专业书籍至少看完一遍（并发、重构、设计模式…）</li>
-<li style="list-style: none"><input type="checkbox"> 微信读书每天一个小时(目前时长:95h,年终总计300小时)</li>
-<li style="list-style: none"><input type="checkbox"> 坚持每周去两次健身房(多练肚子、力量、学会蝶泳)</li>
-<li style="list-style: none"><input type="checkbox"> 至少完成一项 前后端分离项目</li>
-<li style="list-style: none"><input type="checkbox"> 完成一项 微服务项目(类似公司使用相关技术)</li>
-<li style="list-style: none"><input type="checkbox"> <strong>不辞职</strong></li>
-<li style="list-style: none"><input type="checkbox"> 多交朋友、多换位思考、多与朋友交流沟通</li>
-<li style="list-style: none"><input type="checkbox"> 居安思危，多思考关注相关专业前景，生活环境</li>
-<li style="list-style: none"><input type="checkbox"> Java基础技能强化</li>
-<li style="list-style: none"><input type="checkbox"> 多买书</li>
-<li style="list-style: none"><input type="checkbox"> 学习更多的新菜(至少三项)</li>
-<li style="list-style: none"><input type="checkbox"> 少买电子产品，少网购，少逛数码产品</li>
-<li style="list-style: none"><input type="checkbox"> 学英语记单词、学数学、多看视频教程</li>
-<li style="list-style: none"><input type="checkbox" checked> <del>少玩游戏</del>  -2019.06卸载游戏</li>
-</ul>
-</blockquote>
+<p>[参考资料]</p>
+<ol>
+<li><a href="https://blog.csdn.net/sbtmbj2010/article/details/45097747" target="_blank" rel="noopener">CSDN</a></li>
+</ol>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/linux/">linux</a>, <a class="has-link-grey -link" href="/tags/云服务器/">云服务器</a>
+                </div>
+            </div>
         </div>
         
         
@@ -272,6 +294,20 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/20/随笔-关于2019年的总结.html">
+                <span class="level-item">[随笔]关于2019年的总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
 
 
 <div class="card">
@@ -294,6 +330,7 @@
 
     </div>
 </div>
+
 </div>
                 
 
@@ -411,6 +448,21 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#写在前面">
+        <span class="has-mr-6">1</span>
+        <span>写在前面</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -761,7 +813,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="" height="28">
+                    <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="[笔记]linux服务器内存占用率大" height="28">
                 
                 </a>
                 <p class="is-size-7">
