@@ -2,13 +2,13 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>Spider Man - Monkey&amp;umpkin</title>
+<title>[笔记]Linux系统分区 - Monkey&amp;umpkin</title>
 <meta charset="utf-8" />
 
 <meta name="generator" content="Hexo 3.9.0" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>Spider Man - Monkey&amp;umpkin</title>
+<title>[笔记]Linux系统分区 - Monkey&amp;umpkin</title>
 
 <meta name="google-site-verification" content="67z1CXZ8AOhImIglgTwqAlneRCHTO6xRJo5NeafDAqw" />
 <script>
@@ -26,26 +26,22 @@
 })();
 </script>
 
-    <meta name="description" content="With great power comes great responsibility！">
-<meta name="keywords" content="随笔">
+    <meta name="description" content="写在前面 linux系统分区笔记">
+<meta name="keywords" content="categories-java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spider Man">
-<meta property="og:url" content="https://hztjiayou.github.io/2019/06/21/spider-man.html">
+<meta property="og:title" content="[笔记]Linux系统分区">
+<meta property="og:url" content="https://hztjiayou.github.io/2020/02/27/笔记-Linux系统分区.html">
 <meta property="og:site_name" content="Monkey&amp;umpkin">
-<meta property="og:description" content="With great power comes great responsibility！">
+<meta property="og:description" content="写在前面 linux系统分区笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://hztjiayou.github.io/assets/img/amazing.jpg">
-<meta property="og:image" content="https://hztjiayou.github.io/assets/img/mj.jpg">
-<meta property="og:image" content="https://hztjiayou.github.io/assets/img/spider_man.jpg">
-<meta property="og:updated_time" content="2019-10-06T15:45:44.000Z">
+<meta property="og:updated_time" content="2020-02-27T06:31:38.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spider Man">
-<meta name="twitter:description" content="With great power comes great responsibility！">
-<meta name="twitter:image" content="https://hztjiayou.github.io/assets/img/amazing.jpg">
+<meta name="twitter:title" content="[笔记]Linux系统分区">
+<meta name="twitter:description" content="写在前面 linux系统分区笔记">
 
 
 
-<link rel="alternative" href="/atom.xml" title="Spider Man" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="[笔记]Linux系统分区" type="application/atom+xml">
 
 
 
@@ -121,7 +117,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="Spider Man" height="28">
+                <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="[笔记]Linux系统分区" height="28">
             
             </a>
         </div>
@@ -173,6 +169,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -193,17 +193,17 @@
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 
-                <time class="level-item has-text-grey" datetime="2019-06-21T14:06:26.000Z">2019-06-21</time>
+                <time class="level-item has-text-grey" datetime="2020-02-27T06:25:16.000Z">2020-02-27</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/电影/">电影</a>
+                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 69 个字)
+                    5 分钟 读完 (大约 790 个字)
                 </span>
                 
                 
@@ -217,21 +217,38 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Spider Man
+                [笔记]Linux系统分区
             
         </h1>
         <div class="content">
-            <p><strong><em>With great power comes great responsibility！</em></strong></p>
-<p><img src="/assets/img/amazing.jpg" alt="amazing"></p>
+            <h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><blockquote>
+<p>linux系统分区笔记</p>
 <a id="more"></a>
-<hr>
-<h2 id><a href="#" class="headerlink" title=" "></a><iframe src="//player.bilibili.com/player.html?aid=49016351&cid=85844158&page=1" scrolling="yes" border="1" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></h2><p><strong><em>if you are nothing without this suit,then you shouldn’t have it</em></strong></p>
-<hr>
-<p>2019/06/29更新</p>
-<p>昨天晚上看完了<em>Spider Man : far from home</em>，很nice的一部电影</p>
-<p><img src="/assets/img/mj.jpg" alt="mj"></p>
-<p>But i still like <em>The Amazing Spider Man</em> most ….</p>
-<p><img src="/assets/img/spider_man.jpg" alt="spider_man"></p>
+</blockquote>
+<h4 id="1-系统分区"><a href="#1-系统分区" class="headerlink" title="1.系统分区"></a>1.系统分区</h4><p>在windows下分区方法是：硬盘分区-格式化-分配盘符</p>
+<p>但是在linux下是：硬盘分区-格式化-分区设备文件名-挂载（分配盘符）</p>
+<p>其中设备文件名是固定的，是系统自动分配的。</p>
+<p><strong>总结</strong></p>
+<ul>
+<li><p>分区：把大硬盘分为小的逻辑分区</p>
+</li>
+<li><p>格式化：写入文件系统</p>
+</li>
+<li>分区设备文件名：给每个分区定义设备文件名</li>
+<li>挂载：给每个分区分配挂载点</li>
+</ul>
+<p><strong>通俗的来说就是</strong>：你有一块硬盘，你要把它装配到你的LINUX电脑上，对于一整块硬盘你往往会把它分区，类似于win分为C、D、E等，这样方便管理，这就是把你的硬盘分为小的逻辑分区。好区之后需要对其进行格式化，格式化的目的不是清空所有文件！而是写入文件系统。然后要做的是给每个分区定义设备文件名，如：sda、sdb等（sda、sdb代表的是这一整块硬盘的名字），同时分配逻辑分区名，如sda1、sda2等（这代表的是一块硬盘分为1、2两个分区，但是一块硬盘只能支持4个主分区，也就是sda1、2、3、4，<strong>如果你要分4个以上分区，linux就会增加一个扩展分区，在扩展分区中分第5个分区，也就是第1个逻辑分区</strong>）。接下来就是挂载，挂载之前要先了解linux的系统结构是树状的。</p>
+<p>其中<code>/</code>是整个系统的根目录，而<code>/boot</code>、<code>/etc</code>等是子目录，而<code>挂载</code>的意思就是把硬盘的某个分区挂到这些目录下，比如你可以把<code>/dev/sda3</code>挂载到<code>/</code>根目录下，那么你在<code>/</code>根目录下的文件就存储在<code>/dev/sda3</code>这个硬盘分区，同理你还可以把<code>/dev/sda1</code>挂载到<code>/boot</code>目录下，每一个目录都可以有自己独立的硬盘空间，这就是挂载。</p>
+<h4 id="2-安装linux系统时分区配置"><a href="#2-安装linux系统时分区配置" class="headerlink" title="2.安装linux系统时分区配置"></a>2.安装linux系统时分区配置</h4><p>在安装linux时候，必须要分配的分区有：</p>
+<ul>
+<li><code>/</code>根分区。</li>
+<li><code>swap分区</code>，交换分区，物理内存的两倍，不超过2GB。swap分区是在电脑物理内存不够用的时候，会使用swap交换内存，但是给其分配空间过大并没有多大的作用，反而还会占用硬盘空间，所以给其最多配置2GB。</li>
+</ul>
+<p>另外推荐分区：</p>
+<ul>
+<li><code>/boot</code>,启动分区，200MB。系统的启动需要一定额外的空间，如果不分配<code>/boot</code>分区，则启动所需要的空间就被包括在<code>/</code>根分区中，一点<code>/</code>的空间被使用完，那么系统就很有可能启动不了，所有往往要分一个<code>/boot</code>分区。</li>
+<li><code>/home</code>，存储用户数据。</li>
+</ul>
 
         </div>
         
@@ -239,7 +256,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/随笔/">随笔</a>
+                    <a class="has-link-grey -link" href="/tags/linux/">linux</a>
                 </div>
             </div>
         </div>
@@ -289,17 +306,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/03/ECL电路基本知识.html">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">ECL电路基本知识</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/17/hexo博客删除无用tag.html">
-                <span class="level-item">hexo博客删除无用tag</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/27/随笔-linux从业方向.html">
+                <span class="level-item">[随笔]linux从业方向</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -447,6 +457,29 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#写在前面">
+        <span class="has-mr-6">1</span>
+        <span>写在前面</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-系统分区">
+        <span class="has-mr-6">2</span>
+        <span>1.系统分区</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-安装linux系统时分区配置">
+        <span class="has-mr-6">3</span>
+        <span>2.安装linux系统时分区配置</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -797,7 +830,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="Spider Man" height="28">
+                    <img src="http://img.hztjiayou.top/images/2020/02/16/tubiao.jpg" alt="[笔记]Linux系统分区" height="28">
                 
                 </a>
                 <p class="is-size-7">

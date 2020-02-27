@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[笔记]Linux系统分区]]></title>
+    <url>%2F2020%2F02%2F27%2F%E7%AC%94%E8%AE%B0-Linux%E7%B3%BB%E7%BB%9F%E5%88%86%E5%8C%BA.html</url>
+    <content type="text"><![CDATA[写在前面 linux系统分区笔记 1.系统分区在windows下分区方法是：硬盘分区-格式化-分配盘符 但是在linux下是：硬盘分区-格式化-分区设备文件名-挂载（分配盘符） 其中设备文件名是固定的，是系统自动分配的。 总结 分区：把大硬盘分为小的逻辑分区 格式化：写入文件系统 分区设备文件名：给每个分区定义设备文件名 挂载：给每个分区分配挂载点 通俗的来说就是：你有一块硬盘，你要把它装配到你的LINUX电脑上，对于一整块硬盘你往往会把它分区，类似于win分为C、D、E等，这样方便管理，这就是把你的硬盘分为小的逻辑分区。好区之后需要对其进行格式化，格式化的目的不是清空所有文件！而是写入文件系统。然后要做的是给每个分区定义设备文件名，如：sda、sdb等（sda、sdb代表的是这一整块硬盘的名字），同时分配逻辑分区名，如sda1、sda2等（这代表的是一块硬盘分为1、2两个分区，但是一块硬盘只能支持4个主分区，也就是sda1、2、3、4，如果你要分4个以上分区，linux就会增加一个扩展分区，在扩展分区中分第5个分区，也就是第1个逻辑分区）。接下来就是挂载，挂载之前要先了解linux的系统结构是树状的。 其中/是整个系统的根目录，而/boot、/etc等是子目录，而挂载的意思就是把硬盘的某个分区挂到这些目录下，比如你可以把/dev/sda3挂载到/根目录下，那么你在/根目录下的文件就存储在/dev/sda3这个硬盘分区，同理你还可以把/dev/sda1挂载到/boot目录下，每一个目录都可以有自己独立的硬盘空间，这就是挂载。 2.安装linux系统时分区配置在安装linux时候，必须要分配的分区有： /根分区。 swap分区，交换分区，物理内存的两倍，不超过2GB。swap分区是在电脑物理内存不够用的时候，会使用swap交换内存，但是给其分配空间过大并没有多大的作用，反而还会占用硬盘空间，所以给其最多配置2GB。 另外推荐分区： /boot,启动分区，200MB。系统的启动需要一定额外的空间，如果不分配/boot分区，则启动所需要的空间就被包括在/根分区中，一点/的空间被使用完，那么系统就很有可能启动不了，所有往往要分一个/boot分区。 /home，存储用户数据。]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[随笔]linux从业方向]]></title>
+    <url>%2F2020%2F02%2F27%2F%E9%9A%8F%E7%AC%94-linux%E4%BB%8E%E4%B8%9A%E6%96%B9%E5%90%91.html</url>
+    <content type="text"><![CDATA[写在前面 常见的linux从业方向有：运维、开发、底层。 运维 服务器运维：保证服务器不宕机，常常为“背锅侠”。 为开发搭建开发环境和提供技术支持：包括不限于如下服务的配置——ftp、dns、apache、iptable、oracle、mysql。还需要对服器状态进行监视。 ===&gt;运维工程师需要学什么？ 运维工程师需要懂很多的命令，开发环境的搭建，各种服务的配置，日常的维护等，很多的操作通过脚本能够方便的实现，所以运维工程师还需要东shell和python。推荐入门书籍：《鸟哥linux私房菜》。 应用开发 应用开发工程师：相对运维来说开发和底层要写相对较多的代码；简言之linux开发就是开发linux系统下的应用程序，就如同windows下的程序一样；linux开发工程师主要方向有两个：①服务器方向；②嵌入式方向。 ===&gt;开发工程师需要掌握什么？ 首先熟悉linux平台的API，包括IO操作、进程间通讯、linux环境、网络通讯等，推荐看APUE这本神书。另外还要懂脚本语言，包括shell、python;还有数据库，比如mysql、sqlite等至少懂一个。 底层开发 底层开发：主要是嵌入式方向，不过现在很多底层移植、适配的工作芯片厂商已经做好了，所以底层开发工程师的好去处是芯片厂商。]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[笔记]manjaro使用技巧]]></title>
     <url>%2F2020%2F02%2F27%2F%E7%AC%94%E8%AE%B0-manjaro%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html</url>
     <content type="text"><![CDATA[写在前面 在安装完manjaro系统过之后，还有一些细微的配置和技巧可以让manjaro使用起来更加方便，这篇文章归纳了杂乱的manjaro使用技巧、方法、常用软件等。 Dolphin文件管理使用技巧在Dolphin中使用 “终端” 管理文件通过使用F4按键，可以在dolphin当中直接启动终端。同样F4可以关闭终端。 更改删除为确认后再删除在dolphin之下删除文件，会不经过确认直接删除，这就有点危险了，所以可以在dolphin的配置当中-常规-确认当中 勾选删除文件。 修改打开文件为双击manjaro默认打开文件是单击鼠标左键即可打开，这不太符合我的使用习惯，可以在设置-&gt;外观中修改。 使用wine安装的软件存放在哪？wine安装的TIM，下载的文件存放在哪? .deepinwine/Deepin-TIM/drive_c/users/hzt/My Documents/Tencent Files/1440327760/FileRec 同理其他使用wine安装的软件也可在此目录下找到。 常用命令 lspci|grep -i net #查看网卡信息 systemctl list-unit-files –state=enabled #查看已经启用的服务 git 代理设置，推荐放到 .zshrc 中作为常用命令 123456789git-proxy()&#123; git config --global http.proxy socks5://127.0.0.1:1080 git config --global https.proxy socks5://127.0.0.1:1080 &#125; git-noproxy()&#123; git config --global --unset http.proxy git config --global --unset https.proxy &#125; 设置 TIM DPI（高分屏）： 1$ env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg 在 Graphics 中将 DPI 调整为 120 。 设置 wechat DPI（高分屏）： 1$ env WINEPREFIX="$HOME/.deepinwine/Deepin-WeChat" winecfg 在 Graphics 中将 DPI 调整为 120 。 开启wifi热点win10在连接wifi之后，可以开启热点让手机连接，同样manjaro（linux）也可以。linux下可以使用 creat_ap 实现。 sudo pacman -S create_ap iw dev 查看网卡名称，Interface 后面的就是网卡名称 使用 sudo create_ap wlp5s0 wlp5s0 wifi名称 密码 创建热点 如果报错“ERROR: Your adapter can not transmit to channel 36, frequency band 5GHz.” 编辑 sudo vim /usr/bin/create_ap Find the function is_wifi_connected and replace it with: 123is_wifi_connected() &#123; return 1&#125; Finish!!! 录屏闪屏使用相关软件录屏时候，会出现闪屏情况，通过以下方式应该可以解决。 只要开启显示帧数就能解决，基本和录制方式以及工具帧数等无关。 比较可靠的方式，直接选择在设置-&gt;显示与监控-&gt;混成器中关闭避免撕裂即可解决; 相关软件推荐 redshift 根据你的周边调整你屏幕的色温。当你夜晚在屏幕前工作时，它也许能帮助你减少对眼睛的伤害； i-nex 小而全的系统信息查看软件； bleachbit 快速释放磁盘空间并不知疲倦地守卫你的隐私。释放缓存，删除 cookie，清除互联网浏览历史，清理临时文件，删除日志，以及更多功能… ccal 终端农历日历，终端启动ccal； variety 随即更换壁纸的应用； wiznote 为知笔记； meld 文本比较； goldendict 词典软件!!!!!!!!!!!!!!!!! 以上软件使用 yay安装 有意思软件： cmatrix 终端从上往下输出无尽的字符串,类似&lt;&lt;黑客帝国&gt;&gt;中的矩阵效果，终端运行 cmatrix ； screenfetch neofetch lolcat 一个在 Linux 终端中输出彩虹特效的命令行工具 figlet 开机自启动开机自启动程序：这时候可以在开机和关机=&gt;自动启动里设置，可以添加应用程序也可以添加脚本，当然也可以直接把可执行文件复制到～/.config/autostart 目录下]]></content>
