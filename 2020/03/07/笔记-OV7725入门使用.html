@@ -34,18 +34,18 @@
 <meta property="og:site_name" content="Monkey&amp;umpkin">
 <meta property="og:description" content="写在前面 最近在研究OV7725摄像头的使用，通过学习有了一定的了解，故记录下来。通过使用STM32f103单片机为主控，控制OV7725实时显示图像到野火3.2寸LCD。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307185511765.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307190034429.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307190306730.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307190655201.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307191010536.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307191504642.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307191513989.png">
-<meta property="og:updated_time" content="2020-04-27T15:05:07.836Z">
+<meta property="og:image" content="http://qn.hztjiayou.top/img/image-20200307185511765.png">
+<meta property="og:image" content="http://qn.hztjiayou.top/img/image-20200307190034429.png">
+<meta property="og:image" content="http://qn.hztjiayou.top/img/image-20200307190306730.png">
+<meta property="og:image" content="http://qn.hztjiayou.top/img/image-20200307190655201.png">
+<meta property="og:image" content="http://qn.hztjiayou.top/img/image-20200307191010536.png">
+<meta property="og:image" content="http://qn.hztjiayou.top/img/image-20200307191504642.png">
+<meta property="og:image" content="http://qn.hztjiayou.top/img/image-20200307191513989.png">
+<meta property="og:updated_time" content="2020-04-29T13:42:21.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[笔记]OV7725入门使用">
 <meta name="twitter:description" content="写在前面 最近在研究OV7725摄像头的使用，通过学习有了一定的了解，故记录下来。通过使用STM32f103单片机为主控，控制OV7725实时显示图像到野火3.2寸LCD。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307185511765.png">
+<meta name="twitter:image" content="http://qn.hztjiayou.top/img/image-20200307185511765.png">
 
 
 
@@ -53,7 +53,7 @@
 
 
 
-<link rel="icon" href="https://raw.githubusercontent.com/hztjiayou/Photos/master/panda.png">
+<link rel="icon" href="http://qn.hztjiayou.top/img/panda.png">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -125,7 +125,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/tubiao.jpg" alt="[笔记]OV7725入门使用" height="28">
+                <img src="http://qn.hztjiayou.top/img/tubiao.jpg" alt="[笔记]OV7725入门使用" height="28">
             
             </a>
         </div>
@@ -211,7 +211,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2289 个字)
+                    15 分钟 读完 (大约 2275 个字)
                 </span>
                 
                 
@@ -243,18 +243,18 @@
 <h3 id="数据传输时序"><a href="#数据传输时序" class="headerlink" title="数据传输时序"></a>数据传输时序</h3><p>在OV7725的使用种涉及多个时序控制：<br>一是SCCB时序，这是STM32和OV7725之间的通讯方式，STM32通过SCCB时序向OV7725写入相关寄存器配置。<br>二是FIFO读写时序，FIFO的写入端连接的是OV7725输出端连接的是STM32。<br>三是摄像头输出的VGA时序，摄像头的输出VGA时序因为和FIFO写入时序类似，所以直接连接FIFO输入端。</p>
 <h4 id="SCCB时序"><a href="#SCCB时序" class="headerlink" title="SCCB时序"></a>SCCB时序</h4><p>SCCB时序类似I2C协议，其实直接可以使用I2C协议代替SCCB，在OV7725的控制中，使用模拟I2C代替SCCB协议。<br>STM32通过SCCB协议向OV7725写入相关的寄存器配置，初始化OV7725等。</p>
 <h4 id="FIFO时序"><a href="#FIFO时序" class="headerlink" title="FIFO时序"></a>FIFO时序</h4><p>首先要知道FIFO芯片的引脚：</p>
-<p><img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307185511765.png" alt="image-20200307185511765"></p>
+<p><img src="http://qn.hztjiayou.top/img/image-20200307185511765.png" alt="image-20200307185511765"></p>
 <p>FIFO芯片同时支持写和读，所以它的输入和输出引脚是独立的，DI[0:7]和DO[0:7]。</p>
 <p><strong>写时序</strong></p>
 <p>写时序，当 <strong>WE</strong>引脚为低电平时，FIFO的写入处于使能状态，随着WCK的运转，DI[0:7]表示的数据将会按照地址递增的方式存入FIFO,当 <strong>WE</strong>引脚为高电平时候，关闭输入，FIFO将不会被写入。写数据时候，通常会把 <strong>WRST</strong>设置为低电平，将写指针复位到0地址。</p>
-<p><img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307190034429.png" alt="image-20200307190034429"></p>
+<p><img src="http://qn.hztjiayou.top/img/image-20200307190034429.png" alt="image-20200307190034429"></p>
 <p><strong>读时序</strong></p>
 <p>当 <strong>OE</strong>和 <strong>RE</strong>引脚均为低电平时，输出处于使能状态，随着RCK时钟的运转DO[0:7]将数据按地址递增的方式输出。读数据的时候，通常会把 <strong>RRST</strong>设置低电平，将读指针复位到0地址。</p>
-<p><img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307190306730.png" alt="image-20200307190306730"></p>
+<p><img src="http://qn.hztjiayou.top/img/image-20200307190306730.png" alt="image-20200307190306730"></p>
 <h4 id="VGA时序"><a href="#VGA时序" class="headerlink" title="VGA时序"></a>VGA时序</h4><p>VGA时序是OV7725输出图像使用的时序，D2-D9 数据线在 PCLK 在上升沿阶段维持稳定， 并且会在 1 个像素同步时钟 PCLK 的驱动下发送 1 字节的数据信号，所以 2 个 PCLK 时钟可发送 1 个 RGB565 格式的像素数据。当 HREF 为高电平时， 像素数据依次传输，每传输完一行数据时，行同步信号 HREF 会输出一个电平跳变信号间隔开当前行和下一行的数据；一帧的图像由 N 行数据组成， 当 VSYNC 为低电平时，各行的像素数据依次传输， 每传输完一帧图像时，VSYNC 会输出一个电平跳变信号 。因为VGA时序与FIFO的写时序类似，故OV7725的输出接到FIFO的输入。</p>
-<p><img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307190655201.png" alt="image-20200307190655201"></p>
+<p><img src="http://qn.hztjiayou.top/img/image-20200307190655201.png" alt="image-20200307190655201"></p>
 <p><br></p>
-<h3 id="OV7725模块引出引脚"><a href="#OV7725模块引出引脚" class="headerlink" title="OV7725模块引出引脚"></a>OV7725模块引出引脚</h3><p><img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307191010536.png" alt="image-20200307191010536"></p>
+<h3 id="OV7725模块引出引脚"><a href="#OV7725模块引出引脚" class="headerlink" title="OV7725模块引出引脚"></a>OV7725模块引出引脚</h3><p><img src="http://qn.hztjiayou.top/img/image-20200307191010536.png" alt="image-20200307191010536"></p>
 <p>从上图 可了解到， 与 OV7725 传感器像素输出相关的 PCLK 和 D[0:7]并没有引出， 因为这些引脚被连接到了 FIFO 的输入部分， OV7725 的像素输出时序与 FIFO 的写入数据时序是一致的，所以在 OV7725 时钟 PCLK 的驱动下， 它输出的数据会一个字节一个字节地被 FIFO 接收并存储起来。其中最为特殊的是 WEN 引脚，它与 OV7725 的 HREF 连接到一个与非门的输入，与非门的输出连接到 FIFO 的 WE 引脚，因此，当 WEN 与 HREF 均为高电平时， FIFO 的 WE为低电平，此时允许 OV7725 向 FIFO 写入数据。  </p>
 <p>外部控制器通过控制 WEN 引脚， 可防止 OV7725 覆盖了还未被控制器读出的旧 FIFO数据。另外， 在 OV7725 输出时序中， 只有当 HREF 为高电平时， PCLK 驱动下 D[0:7]线表示的才是有效像素数据，因此，利用 HREF 控制 FIFO 的 WE 可以确保只有有效数据才被写入到 FIFO 中  。</p>
 <p><br></p>
@@ -267,8 +267,8 @@
 <li>控制器使用 RRST 复位读指针到 FIFO 的 0 地址，然后通过 FIFO 的 RCLK 和DO[0:7]引脚， 从 0 地址开始把 FIFO 缓存的整帧图像数据读取出来。 在这期间，OV7725 是持续输出它采集到的图像数据的，但由于禁止写入 FIFO，这些数据被丢弃了。</li>
 <li>控制器使用 WRST 复位写指针到 FIFO 的 0 地址，然后等待新的 VSYNC 有效信号到来，检测到后把 WEN 引脚设置为高电平， 恢复 OV7725 向 FIFO 的写入权限，OV7725 输出的新一帧图像数据会被写入到 FIFO 的 0 地址中， 重复上述过程。</li>
 </ul>
-<p>摄像头的整个控制过程：<br><img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307191504642.png" alt="image-20200307191504642"></p>
-<p><img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/image-20200307191513989.png" alt="image-20200307191513989"></p>
+<p>摄像头的整个控制过程：<br><img src="http://qn.hztjiayou.top/img/image-20200307191504642.png" alt="image-20200307191504642"></p>
+<p><img src="http://qn.hztjiayou.top/img/image-20200307191513989.png" alt="image-20200307191513989"></p>
 <p><br></p>
 <hr>
 <p><strong>[参考文献]</strong></p>
@@ -388,7 +388,7 @@
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="https://raw.githubusercontent.com/hztjiayou/Photos/master/v2-33fbac2e5baa4f8dc49c8062e10b1e2a_hd.jpg" alt="huangzhentao">
+                        <img class="image is-128x128 has-mb-6" src="http://qn.hztjiayou.top/img/v2-33fbac2e5baa4f8dc49c8062e10b1e2a_hd.jpg" alt="huangzhentao">
                     
                     
                     <p class="is-size-4 is-block">
@@ -898,7 +898,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://raw.githubusercontent.com/hztjiayou/Photos/master/tubiao.jpg" alt="[笔记]OV7725入门使用" height="28">
+                    <img src="http://qn.hztjiayou.top/img/tubiao.jpg" alt="[笔记]OV7725入门使用" height="28">
                 
                 </a>
                 <p class="is-size-7">
