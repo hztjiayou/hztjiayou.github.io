@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[笔记]ubuntu安装deepin-wine-qq/wechat]]></title>
+    <url>%2F2020%2F05%2F12%2F%E7%AC%94%E8%AE%B0-ubuntu%E5%AE%89%E8%A3%85deepin-wine-qq-wechat.html</url>
+    <content type="text"><![CDATA[写在前面 这是一篇老生常谈的笔记，用以归纳总结知识，方便日后查找。本文记录了ubuntu20.04如何安装wine-qq和wine-wechat和安装过程中遇到种种问题及解决方法。 安装步骤 安装 deepin-wine-ubuntu 下载相关应用容器（qq/wechat等） 安装deepin-wine-ubuntu项目地址：https://github.com/wszqkzqk/deepin-wine-ubuntu 安装方法 克隆github项目到本地 1git clone https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git 解压后切换到解压目录，授予 install.sh可执行权限，执行： ./install.sh 完成安装 安装相关容器容器下载地址：http://mirrors.aliyun.com/deepin/pool/non-free/d/ 安装QQ可以选择如下地址下载，选择.ded文件下载安装，推荐使用dpkg -i命令安装： TIMQQQQ轻聊版 问题： 如果安装系统的时候选择的是英文，那么会有后期显示中文乱码，具体解决方法未知。 如何把QQ、wechat的系统托盘集成到状态栏? 安装gnome-tweak-tool sudo apt install gnome-tweak-tool 安装top-icons-plus扩展插件 sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks 安装完成后重启系统，在系统的所有应用程序中会有一个“扩展（Extensions）”，点击“扩展”，打开 Topicons Plus 即可 安装wechat容器下载连接：http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/ 在此连接中有两个deb安装包，我在尝试 deepin.com.wechat_2.6.8.65deepin0_i386.deb 这个版本后，出现安装错误，于是安装了另一个版本，安装正常。 问题 wechat无法发送图片 sudo apt install libjpeg62：i386 [参考链接] Ubuntu deepin-wine 解决系统非中文语言环境时软件无法设置为中文 Ubuntu18.04 下稳定安装TIM、微信、迅雷和百度云(支持中文输入！！) deepin-wine-ubuntu项目]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[随笔]校园邮箱申请office 365教育版]]></title>
     <url>%2F2020%2F03%2F10%2F%E9%9A%8F%E7%AC%94-%E6%A0%A1%E5%9B%AD%E9%82%AE%E7%AE%B1%E7%94%B3%E8%AF%B7office365%E6%95%99%E8%82%B2%E7%89%88.html</url>
     <content type="text"><![CDATA[写在前面 起因是因为在bilibili看到大神“稚晖君”的电脑使用onedrive同步文件，于是就去了解了下onedrive，发现个人onedrive用户只有5G使用空间，觉得太少了，顿时想起万能大淘宝，上淘宝一查，好多出售onedrive账号的，所以好奇这些卖家是如何有这么多大空间的账号，结果是方法各有千秋，其中就有使用假冒校园邮箱申请的，但是容易被官方删号，想到自己有校园网邮箱于是想着试一试…. 首先前提是你拥有一个校园网邮箱，网上也有好多使用假冒校园网邮箱注册空间的，但是容易被删号，一旦删号，所存的文件就再也找不回来了，所以最好还是有一个自己的校园邮箱为好。 注册教程 注册地址：https://signup.microsoft.com/signup?sku=Education 选择学生或者教师都行，我这一步选择学生 填写你的相关信息，密码等 后续设置后，点击完成就可以进入office 365界面 在上面这个界面中，可以在线使用office几乎所有功能，除了没有visio。 然后就是查看onedrive了，通过这种方式申请的教育网office 365，以前是有5T空间的，但是现在只有1T空间了。到这里onedrive就可以正常使用了，在“我的电脑”里面添加一个onedrive账号就可使用了。 但是！！！有几点要注意，最好不存放重要文件，原因有以下几点： 使用的是校园邮箱，邮箱有可能在你毕业之后被收回或无效，那么这个onedrive也就无效了。 使用校园邮箱申请的onedrive空间，你只是一个使用中，而校园的管理人员是可以删除你的账号以及查看你onedrive中存放的文件内容，这点很可怕有木有。 关于上面第二点，如果不是管理员，最好就不要存放重要、敏感文件。当然如果有权限你也可以申请成为onedrive校园管理员，并且可以使用此方法判断是否已经存在管理员： 登录office 365之后，点击左上角的“点点方框”，点击“admin” 阅读“成为管理员” 页面上的说明，然后选择“是，我想成为管理员”注意：如果未显示此选项，则表示已有 Office 365 管理员。 选择“验证”，然后按照步骤操作，证明你拥有或管理与 Office 365 服务关联的域名。请参阅验证域名。 完成上述操作后，登录 Office 365，然后选择“管理员”，以打开可以在其中管理服务的管理员中心。 对于教育版office 365，微软官方的解释是： 对于符合条件的学校，学生和其他个人都可注册 Office 365，并立即开始将它用于学校事务。他们需要的只是学校提供的电子邮件地址以及他们创建的密码。提供这两项信息，他们即可在其 PC、Mac 或其他设备上安装最新版本的 Office，并开始创建具有专业外观的文档、在云中使用 OneDrive for Business 进行共享和协作等。他们可以自己完成这项工作，快速提高工作效率，而无需等待其部门或学校实施正式部署流程。* 如果注册的第一个人的电子邮件地址，例如为“sara@contoso.edu”，那么该电子邮件地址的域部分“contoso.edu”将用作他们的 Office 365 域名。具有相同电子邮件地址域的所有后续用户（例如“rob@contoso.edu”）也将被添加到同一 Office 365 环境，并拥有相同的云服务。这两个人都可以使用 Office 365 的生产力工具集，但他们不能管理服务。例如，他们无法购买更多许可证、添加新用户或对其他人实施策略。IT 部门可以随时接管此环境，并以管理员身份为其管理服务。为此，请注册 Office 365，因为其他人也使用学校提供的电子邮件地址（例如“mark@contoso.edu”）。请选择左上角的应用启动器图标，选择“管理员”，然后阅读“成为管理员页上的说明。系统会要求你来验证是否拥有或管理与 Office 365 环境相关联的域名（“contoso.edu”）。这样做的原因是，如果你拥有或管理学校的域名，则必须已拥有有权限的 IT 角色。验证完毕后，即可自行提升为 Office 365 管理员角色。 所以说最好是不要存放隐私文件在onedrive上，并且要做好随时备份。 目前我发现我学校在onedrive还未存在管理员，但是我也申请成为不了管理员，GG，所以且用且将就~ [参考文献] 注册教程 微软官方“成为 Office 365 教育版管理员”]]></content>
