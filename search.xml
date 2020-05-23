@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[笔记]AltiumDesigner+KeyShot渲染3D PCB动画/图片]]></title>
+    <url>%2F2020%2F05%2F23%2F%E7%AC%94%E8%AE%B0-AltiumDesigner-KeyShot%E6%B8%B2%E6%9F%933D-PCB%E5%8A%A8%E7%94%BB-%E5%9B%BE%E7%89%87.html</url>
+    <content type="text"><![CDATA[写在前面 本文介绍一种使用KeyShot+AD渲染出如封面效果的PCB板的图片或者视频的方法。 封面效果图来自https://space.bilibili.com/443798197?spm_id_from=333.788.b_765f7570696e666f.1。 Step 1在Altium Designer完成PCB绘制，按下键盘上方数字键 3 切换到3D视图。（半残品，用于展示） 注意 在AD中绘制PCB时候使用的封装库需要有对应的3D模型！！ Step 2在AD中点击 File-&gt;export-&gt;STEP 3D导出step文件。 Step 3把step文件拖进KeyShot软件中，保存。 Step 4在AD中点击左上角 DXP-&gt;Preferences-&gt;PCB Editor-&gt;Display,取消 3D Bodies的两个勾选，点击OK。 这一步的目的是不显示元器件封装。 Step 5使用截图软件在AD中完整的截取PCB 3D视图的图片，正面和反面都截取，保存，注意是边边要对齐。 Step 6在KeyShot中选择PCB正面，左点击PCB，界面右边出现 场景选项卡，点击 材质，点击 纹理，双击颜色，选择刚刚截取的正面图像，映射类型选择 平面，对准选择 部件，点击 移动纹理，调整纹理与模型对准，对于PCB反面同样操作，记得完成PCB反面操作之后，取消下面的 双面选项，否则会出现两面显示一样的材质。 Step 7使用KeyShot的库中的材质，Metal中选择喜欢的材质拖动到PCB模型对应的器件上，器件将会被加上相关材质效果。 Step 8点击KeyShot软件下面的 渲染，可以选择渲染输出图像或者动画。 参考链接 https://www.bilibili.com/video/BV1X741147ea?from=search&amp;seid=13266290481771071790 https://www.bilibili.com/video/BV1v7411J7eb?from=search&amp;seid=13266290481771071790 https://www.bilibili.com/video/BV1T741177WU?from=search&amp;seid=13266290481771071790]]></content>
+      <categories>
+        <category>AltiumDesigner</category>
+      </categories>
+      <tags>
+        <tag>keyshot</tag>
+        <tag>AltiumDesigner</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[笔记]ubuntu安装deepin-wine-qq/wechat]]></title>
     <url>%2F2020%2F05%2F12%2F%E7%AC%94%E8%AE%B0-ubuntu%E5%AE%89%E8%A3%85deepin-wine-qq-wechat.html</url>
     <content type="text"><![CDATA[写在前面 这是一篇老生常谈的笔记，用以归纳总结知识，方便日后查找。本文记录了ubuntu20.04如何安装wine-qq和wine-wechat和安装过程中遇到种种问题及解决方法。 安装步骤 安装 deepin-wine-ubuntu 下载相关应用容器（qq/wechat等） 安装deepin-wine-ubuntu项目地址：https://github.com/wszqkzqk/deepin-wine-ubuntu 安装方法 克隆github项目到本地 1git clone https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git 解压后切换到解压目录，授予 install.sh可执行权限，执行： ./install.sh 完成安装 安装相关容器容器下载地址：http://mirrors.aliyun.com/deepin/pool/non-free/d/ 安装QQ可以选择如下地址下载，选择.ded文件下载安装，推荐使用dpkg -i命令安装： TIMQQQQ轻聊版 问题： 如果安装系统的时候选择的是英文，那么会有后期显示中文乱码，具体解决方法未知。 如何把QQ、wechat的系统托盘集成到状态栏? 安装gnome-tweak-tool sudo apt install gnome-tweak-tool 安装top-icons-plus扩展插件 sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks 安装完成后重启系统，在系统的所有应用程序中会有一个“扩展（Extensions）”，点击“扩展”，打开 Topicons Plus 即可 安装wechat容器下载连接：http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/ 在此连接中有两个deb安装包，我在尝试 deepin.com.wechat_2.6.8.65deepin0_i386.deb 这个版本后，出现安装错误，于是安装了另一个版本，安装正常。 问题 wechat无法发送图片 sudo apt install libjpeg62：i386 [参考链接] Ubuntu deepin-wine 解决系统非中文语言环境时软件无法设置为中文 Ubuntu18.04 下稳定安装TIM、微信、迅雷和百度云(支持中文输入！！) deepin-wine-ubuntu项目]]></content>
@@ -81,8 +93,8 @@
         <category>云服务器</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>云服务器</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
