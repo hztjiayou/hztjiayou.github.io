@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="Ian&#39;sBlog">
 <meta property="og:description" content="写在前面 C语言关键字volatile的作用，总结，笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-07T13:26:05.641Z">
+<meta property="og:updated_time" content="2020-06-07T13:31:44.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[笔记]C语言关键字volatile的作用">
 <meta name="twitter:description" content="写在前面 C语言关键字volatile的作用，总结，笔记">
@@ -203,7 +203,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 538 个字)
+                    4 分钟 读完 (大约 549 个字)
                 </span>
                 
                 
@@ -235,6 +235,11 @@
 <figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rURXH0 (*(volatile unsigned char *)0x50000024) <span class="hljs-comment">//UART 0 Receive buffer</span></span></span><br></pre></td></tr></table></figure>
 <p>0x50000024是地址，如果没有将这个地址强行转换位volatile，那么我们在使用rURXH0时，可能直接从CPU的寄存器中读取数据。因为之前rURXH0被访问过，之前从内存中取出的rURXH0的值被保存在某个寄存器中，由于编译器优化的结果，会直接从寄存器中读取rURXH0的值，不去内存读取。使用volatile进行强行转换之后，执行结构每次读取数据都会去内存中读取而不是去寄存器中读取。</p>
 <p>volatile关键字降低编译器的优化度，但是确保了程序的正确性。</p>
+<hr>
+<p><strong>参考文献</strong></p>
+<ul>
+<li><a href="https://blog.csdn.net/yanbober/article/details/8275341" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/8275341</a></li>
+</ul>
 
         </div>
         
