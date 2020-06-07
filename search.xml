@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[笔记]C语言关键字volatile的作用]]></title>
+    <url>%2F2020%2F06%2F07%2F%E7%AC%94%E8%AE%B0-C%E8%AF%AD%E8%A8%80%E5%85%B3%E9%94%AE%E5%AD%97volatile%E7%9A%84%E4%BD%9C%E7%94%A8.html</url>
+    <content type="text"><![CDATA[写在前面 C语言关键字volatile的作用，总结，笔记 前两天面试的时候被问到C语言关键字volatile的作用，一时答不上来，这个关键字以前有在程序中见到过，有印象但是不深刻，在日常的单片机程序开发中也很少使用到。 然后上网查了下，发现有人和我一样的经历 “我在网上看见一个帖子说回答不出这个问题的人是不会被雇佣的。这是区分C程序员和嵌入式系统程序员的最基本的问题。” volatile关键字用于声明那些可能会有意想不到的改变的变量，这个变量可能会被意想不到的改变。由于访问寄存器中数据比访问内存中的数据速度快，因此编译器一般会优化而减少访问内存，如果变量改变则数据会出错，所以使用volatile声明变量，则编译器每次都重新从内存读取变量数据，而不是使用保存在寄存器里的备份。总的来说，我们不能确保寄存器中的数据一定不会改变，则需要使用volatile。 从如下的例子中来看： 1#define rURXH0 (*(volatile unsigned char *)0x50000024) //UART 0 Receive buffer 0x50000024是地址，如果没有将这个地址强行转换位volatile，那么我们在使用rURXH0时，可能直接从CPU的寄存器中读取数据。因为之前rURXH0被访问过，之前从内存中取出的rURXH0的值被保存在某个寄存器中，由于编译器优化的结果，会直接从寄存器中读取rURXH0的值，不去内存读取。使用volatile进行强行转换之后，执行结构每次读取数据都会去内存中读取而不是去寄存器中读取。 volatile关键字降低编译器的优化度，但是确保了程序的正确性。]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[笔记]AltiumDesigner+KeyShot渲染3D PCB动画/图片]]></title>
     <url>%2F2020%2F05%2F23%2F%E7%AC%94%E8%AE%B0-AltiumDesigner-KeyShot%E6%B8%B2%E6%9F%933D-PCB%E5%8A%A8%E7%94%BB-%E5%9B%BE%E7%89%87.html</url>
     <content type="text"><![CDATA[写在前面 本文介绍一种使用KeyShot+AD渲染出如封面效果的PCB板的图片或者视频的方法。 封面效果图来自https://space.bilibili.com/443798197?spm_id_from=333.788.b_765f7570696e666f.1。 Step 1在Altium Designer完成PCB绘制，按下键盘上方数字键 3 切换到3D视图。（半残品，用于展示） 注意 在AD中绘制PCB时候使用的封装库需要有对应的3D模型！！ Step 2在AD中点击 File-&gt;export-&gt;STEP 3D导出step文件。 Step 3把step文件拖进KeyShot软件中，保存。 Step 4在AD中点击左上角 DXP-&gt;Preferences-&gt;PCB Editor-&gt;Display,取消 3D Bodies的两个勾选，点击OK。 这一步的目的是不显示元器件封装。 Step 5使用截图软件在AD中完整的截取PCB 3D视图的图片，正面和反面都截取，保存，注意是边边要对齐。 Step 6在KeyShot中选择PCB正面，左点击PCB，界面右边出现 场景选项卡，点击 材质，点击 纹理，双击颜色，选择刚刚截取的正面图像，映射类型选择 平面，对准选择 部件，点击 移动纹理，调整纹理与模型对准，对于PCB反面同样操作，记得完成PCB反面操作之后，取消下面的 双面选项，否则会出现两面显示一样的材质。 Step 7使用KeyShot的库中的材质，Metal中选择喜欢的材质拖动到PCB模型对应的器件上，器件将会被加上相关材质效果。 Step 8点击KeyShot软件下面的 渲染，可以选择渲染输出图像或者动画。 参考链接 https://www.bilibili.com/video/BV1X741147ea?from=search&amp;seid=13266290481771071790 https://www.bilibili.com/video/BV1v7411J7eb?from=search&amp;seid=13266290481771071790 https://www.bilibili.com/video/BV1T741177WU?from=search&amp;seid=13266290481771071790]]></content>
@@ -93,8 +104,8 @@
         <category>云服务器</category>
       </categories>
       <tags>
-        <tag>云服务器</tag>
         <tag>linux</tag>
+        <tag>云服务器</tag>
       </tags>
   </entry>
   <entry>
